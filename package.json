@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "per-env",
+    "start:development": "nodemon -r dotenv/config ./bin/www",
+    "start:production": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +19,21 @@
   "bugs": {
     "url": "https://github.com/Justin-Stockton/week-12-group-project/issues"
   },
-  "homepage": "https://github.com/Justin-Stockton/week-12-group-project#readme"
+  "homepage": "https://github.com/Justin-Stockton/week-12-group-project#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.18.1",
+    "morgan": "^1.10.0",
+    "node-fetch": "^3.2.4",
+    "per-env": "^1.0.2",
+    "pg": "^8.7.3",
+    "pug": "^3.0.2",
+    "sequelize": "^5.22.5"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.1",
+    "dotenv-cli": "^5.1.0",
+    "nodemon": "^2.0.16",
+    "sequelize-cli": "^5.5.1"
+  }
 }
