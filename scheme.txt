@@ -1,0 +1,46 @@
+
+table playedGames{
+    id [pk]
+    userId int
+    gameId int
+    timePlayed int
+
+}
+table playingGames{
+    id [pk]
+    userId int
+    gameId int
+    timePlayed int
+}
+table wantedGames{
+    id [pk]
+    userId int
+    gameId int
+    timePlayed int
+}
+table Users{
+  id [pk]
+  email string
+  password string
+  userName string
+}
+table Ownerships{
+  id [pk]
+  userId int
+  gameId int
+}
+
+table Games {
+  id [pk]
+  name string(20)
+  tags string(15)
+  gameImage string
+  description text
+}
+
+table Comments {
+  id [pk]
+  comment text
+  userId int
+  gameId int
+}
