@@ -1,0 +1,20 @@
+{
+  "name": "week12-group-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Justin-Stockton/week-12-group-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Justin-Stockton/week-12-group-project/issues"
+  },
+  "homepage": "https://github.com/Justin-Stockton/week-12-group-project#readme"
+}
