@@ -10,10 +10,10 @@ GGs, a Goodreads clone, is a website for users to, keep track of their vast libr
 
 2. Hosting on Heroku
 
-3.Games
-Logged in Users will be able to add games to the database
-Logged in Users will be able to update/edit games THEY created
-Logged in users will be able to delete the games they add to the database
+3. Games
+   Logged in Users will be able to add games to the database
+   Logged in Users will be able to update/edit games THEY created
+   Logged in users will be able to delete the games they add to the database
 
 4. Want to play game rack
    Logged in Users will be able to add games to their want to play rack
