@@ -1,39 +1,29 @@
 {
-  "name": "week12-group-project",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "express-project-starter",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "start": "per-env",
     "start:development": "nodemon -r dotenv/config ./bin/www",
-    "start:production": "node ./bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:production": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Justin-Stockton/week-12-group-project.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Justin-Stockton/week-12-group-project/issues"
-  },
-  "homepage": "https://github.com/Justin-Stockton/week-12-group-project#readme",
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "express": "^4.18.1",
-    "morgan": "^1.10.0",
-    "node-fetch": "^3.2.4",
+    "connect-session-sequelize": "^7.0.4",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-session": "^1.17.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
     "per-env": "^1.0.2",
-    "pg": "^8.7.3",
-    "pug": "^3.0.2",
-    "sequelize": "^5.22.5"
+    "pg": "^8.6.0",
+    "pug": "2.0.4",
+    "sequelize": "^5.22.3",
+    "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
-    "dotenv": "^16.0.1",
-    "dotenv-cli": "^5.1.0",
-    "nodemon": "^2.0.16",
-    "sequelize-cli": "^5.5.1"
+    "dotenv": "^8.2.0",
+    "dotenv-cli": "^4.0.0",
+    "nodemon": "^2.0.6"
   }
 }
