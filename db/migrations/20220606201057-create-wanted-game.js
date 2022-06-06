@@ -11,12 +11,12 @@ module.exports = {
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { foreignKey: "Users" }
+        references: { model: "Users" }
       },
       gameId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { foreignKey: "Games" }
+        references: { model: "Games" }
       },
       wantScale: {
         allowNull: false,
