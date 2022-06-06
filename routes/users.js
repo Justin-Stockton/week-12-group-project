@@ -6,6 +6,7 @@ const { loginUser, logoutUser } = require("../auth");
 const db = require("../db/models");
 const { csrfProtection, asyncHandler } = require("./utils");
 const router = express.Router();
+const { userValidators, loginValidators } = require("../validations");
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -111,3 +112,5 @@ router.post("/logout", (req, res) => {
   logoutUser(req, res);
   return res.redirect("/");
 });
+
+module.exports = router;
