@@ -14,12 +14,12 @@ module.exports = {
         unique: true
       },
       tags: {
-        allowNull: false,
-        type: Sequelize.STRING(15)
+        allowNull: true,
+        type: Sequelize.STRING(50)
       },
       gameImage: {
         allowNull: false,
-        type: Sequelize.STRING(150)
+        type: Sequelize.STRING(255)
       },
       description: {
         allowNull: false,
