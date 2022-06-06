@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 router.use(express.urlencoded());
 
-const { validateUser } = require("..validations");
+const { validateUser } = require("../validations");
 
 router.get("/sign-up", (req, res) => {
   res.render("sign-up", { title: "gGs - Sign Up" });
