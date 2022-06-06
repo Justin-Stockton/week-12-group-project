@@ -1,67 +1,68 @@
-const fetch = (...args) =>
-  import("node-fetch").then(({ default: fetch }) => fetch(...args));
-const { User } = require("./db/models");
+const { check, validationResult } = require("express-validator");
+const loginValidators = [
+  check("email")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for Email"),
+  check("password")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for Password"),
+];
 
-const validateUser = async (req, res, next) => {
-  const { username, email, password, confirmedPassword } = req.body;
-  let errors = [];
+const userValidators = [
+  check("firstName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for First Name")
+    .isLength({ max: 50 })
+    .withMessage("First Name must not be more than 50 characters long"),
 
-  // Username
-  const usernameList = await User.findAll({
-    where: {
-      username: username,
-    },
-  });
+  check("lastName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for Last Name")
+    .isLength({ max: 50 })
+    .withMessage("Last Name must not be more than 50 characters long"),
 
-  if (!username) errors.push("Please provide a username.");
-  if (username && username.length < 5)
-    errors.push("Username must be atleast 5 characters.");
-  if (usernameList.length) errors.push("Username is already taken.");
+  check("username")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for Username")
+    .isLength({ max: 50 })
+    .withMessage("Last Name must not be more than 50 characters long")
+    .custom((value) => {
+      return db.User.findOne({ where: { username: value } }).then((user) => {
+        if (user) {
+          return Promise.reject(
+            "The provided Username is already in use by another account"
+          );
+        }
+      });
+    }),
 
-  // Password
-  const specialCharacters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-  const numbers = /[0-9]/;
-  const lowerCharacters = /[a-z]/;
-  const upperCharacters = /[A-Z]/;
+  check("email")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for Email")
+    .isLength({ max: 255 })
+    .withMessage("Email Address must not be more than 255 characters long")
+    .isEmail()
+    .withMessage("Email Address is not a valid email")
+    .custom((value) => {
+      return db.User.findOne({ where: { email: value } }).then((user) => {
+        if (user) {
+          return Promise.reject(
+            "The provided Email Address is already in use by another account"
+          );
+        }
+      });
+    }),
+  check("password")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for Password")
+    .isLength({ min: 8 })
+    .withMessage("Password must be at least 8 characters long")
+    .isLength({ max: 50 })
+    .withMessage("Password must not be more than 50 characters long")
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, "g")
+    .withMessage(
+      'Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*")'
+    ),
+];
 
-  if (!password) errors.push("Please provide a password.");
-  if (password && password.length < 6)
-    errors.push("Password must be atleast 6 characters.");
-  if (
-    password &&
-    !specialCharacters.test(password) &&
-    !numbers.test(password)
-  ) {
-    errors.push(
-      "Password must contain atleast 1 number or 1 special character."
-    );
-  }
-  if (password && !lowerCharacters.test(password)) {
-    errors.push("Password must contain atleast 1 lowercase letter.");
-  }
-  if (password && !upperCharacters.test(password)) {
-    errors.push("Password must contain atleast 1 uppercase letter.");
-  }
-  if (password !== confirmedPassword) errors.push("Passwords do not match.");
-
-  req.errors = errors;
-  next();
-};
-
-const validateLogin = async (req, res, next) => {
-  const { username, password } = req.body;
-  // user info
-  const usernameList = await User.findAll({
-    where: {
-      username: username,
-      password: password,
-    },
-  });
-  let errors = [];
-
-  if (!username || !password || usernameList.length === 0)
-    errors.push("Please provide a valid username password combination.");
-
-  req.errors = errors;
-  next();
-};
+module.exports = { userValidators, loginValidators };
