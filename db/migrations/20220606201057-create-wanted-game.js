@@ -19,7 +19,7 @@ module.exports = {
         references: { model: "Games" }
       },
       wantScale: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER
       },
       createdAt: {
