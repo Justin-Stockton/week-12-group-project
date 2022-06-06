@@ -7,7 +7,9 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT
   }, {});
   Game.associate = function(models) {
-    // associations can be defined here
+    Game.hasMany(models.Ownership, {foreignKey: "gameId"});
+    Game.hasMany(models.Review, {foreignKey: "gameId"});
+    Game.belongsToMany(models.User, {through:"Ownership", foreignKey: "userId", otherKey: "gameId"});
   };
   return Game;
 };
