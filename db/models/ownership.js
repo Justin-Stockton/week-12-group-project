@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     gameId: DataTypes.INTEGER
   }, {});
   Ownership.associate = function(models) {
-    // associations can be defined here
+    Ownership.belongsTo(models.User, {foreignKey: "userId"});
+    Ownership.belongsTo(models.Game, {foreignKey: "gameId"});
   };
   return Ownership;
 };

@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     wantScale: DataTypes.INTEGER
   }, {});
   WantedGame.associate = function(models) {
-    // associations can be defined here
+    WantedGame.belongsTo(models.User, {foreignKey: "userId"});
+    WantedGame.hasMany(models.Game, {foreignKey: "gameId"});
   };
   return WantedGame;
 };
