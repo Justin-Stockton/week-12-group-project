@@ -1,14 +1,41 @@
 doctype html
 html
   head
-    link(rel='stylesheet' href='/stylesheets/reset.css')
-    title #{title}
   header
-    nav
-      p.logo gGs - goodGames
-      a.home(href="/") Home
-      a.mygames(href="/gamesRack") My Games
-      a.browsegames(href="/games") Browse Games
+    nav 
+      h1 GGs - GoodGames      
   body
+    div Summer Gaming
+    div 
+      h2 Discover and Play More
+      button 
+        a(href="/users/signup" role="button" style="text-decoration:none;color:black") Sign-Up With Email
+    div 
+        p Deciding what to play next?
+        p What are your friends playing?
+    div 
+        p You're in the right place. Browse our game library and see what other people are saying about the games you're interested in.
+        p Chances are your friends are discussing their favorite (or least favorite) games on GGs.
+    div 
+        div 
+            p What will you discover?
+        div 
+            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg?t=1641233427", alt="cs:go", style="width:100px;height:80px")
+            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/945360/header.jpg?t=1646296970", alt="amongUs", style="width:100px;height:80px")
+            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/976730/header.jpg?t=1649955774", alt="halo", style="width:100px;height:80px")
+            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/header.jpg?t=1654392401", alt="stray", style="width:100px;height:80px")
+            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1172620/header.jpg?t=1653607222", alt="seaOfThieves", style="width:100px;height:80px")
+        div 
+            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg?t=1641233427", alt="cs:go", style="width:100px;height:80px")
+            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/945360/header.jpg?t=1646296970", alt="amongUs", style="width:100px;height:80px")
+            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/976730/header.jpg?t=1649955774", alt="halo", style="width:100px;height:80px")
+            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/header.jpg?t=1654392401", alt="stray", style="width:100px;height:80px")
+            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1172620/header.jpg?t=1653607222", alt="seaOfThieves", style="width:100px;height:80px")
+    div 
+      img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/976730/header.jpg?t=1649955774", alt="haloQuote", style="height:20px;width:20px")
+      p Quotes
+      p "I thought I'd try shooting my way out-- Mix things up a little" - Master Chief
+      
     block content
   footer
+    
