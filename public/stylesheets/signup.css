@@ -1,0 +1,29 @@
+@import './login.css';
+
+.first-name {
+    margin-bottom: 2px;
+    margin-right: 55px;
+    display: flex;
+    color: #5536ae;
+  }
+
+.last-name {
+    margin-bottom: 2px;
+    margin-right: 55px;
+    display: flex;
+    color: #5536ae;
+  }
+
+.username {
+    margin-bottom: 2px;
+    margin-right: 56px;
+    display: flex;
+    color: #5536ae;
+  }
+
+.confirm-password {
+    margin-bottom: 2px;
+    margin-right: 32px;
+    display: flex;
+    color: #5536ae;
+  }
