@@ -1,15 +1,14 @@
 doctype html
 html
   head
-      block head
-        title="Express Starter App"
-        link(rel='stylesheet' href='/stylesheets/reset.css')
+    link(rel='stylesheet' href='/stylesheets/reset.css')
+    title #{title}
   header
     nav
-        .logo 
-        a.home(href="/") Home
-        a.mygames(href="/gamesRack") My Games
-        a.browsegames(href="/games") Browse Games
+      p.logo gGs - goodGames
+      a.home(href="/") Home
+      a.mygames(href="/gamesRack") My Games
+      a.browsegames(href="/games") Browse Games
   body
     block content
   footer
