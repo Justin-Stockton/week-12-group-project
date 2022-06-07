@@ -1,27 +1,13 @@
-extends layout.pug
+include utils.pug
 
 block content
-    if errors
-        div
-            ul
-            p The following errors were found:
-                each error in errors
-                    li #{error}
-
+    +validationErrorSummary(errors)
     form(action="/users/signup", method="post")
-        div.form-msg-signup Sign up
-            input(type='hidden' name='_csrf' value=csrfToken)
-        div.form-item
-            input(type='text' id='firstName' name='firstName' value=user.firstName placeholder='First Name')
-        div.form-item
-            input(type='text' id='lastName' name='lastName' value=user.lastName placeholder='Last Name')
-        div.form-item
-            input(type='text' id='email' name='email' value=user.email placeholder='Email')
-        div.form-item
-            input(type='text' id='username' name='username' value=user.username placeholder='Username')
-        div.form-item
-            input(type='password' id='password' name='password' placeholder='Password')
-        div.form-item
-            input(type='password' id='confirmPassword' name='confirmPassword' placeholder='confirmPassword')
-        div
-            button.form-button(type='submit') Sign Up!
+        input(type='hidden' name='_csrf' value=csrfToken)
+        +textField('First Name', 'firstName', user.firstName, 'text')
+        +textField('Last Name', 'lastName', user.lastName, 'text')
+        +textField('Username', 'username', user.username, 'text')
+        +textField('Email', 'email', user.email, 'text')
+        +textField('Password', 'password', user.password, 'password')
+        +textField('Confirm Password', 'confirmPassword', '', 'password')
+        input(type='submit' value='Sign Up')
