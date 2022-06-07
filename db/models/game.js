@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
   Game.associate = function(models) {
     Game.hasMany(models.Ownership, {foreignKey: "gameId"});
     Game.hasMany(models.Review, {foreignKey: "gameId"});
-    Game.belongsToMany(models.User, {through:"Ownership", foreignKey: "userId", otherKey: "gameId"});
+    Game.hasMany(models.PlayingGame, {foreignKey: "gameId"})
+    Game.belongsToMany(models.User, {through:"Ownership", foreignKey: "gameId", otherKey: "userId"});
   };
   return Game;
 };

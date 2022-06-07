@@ -5,9 +5,9 @@ const { csrfProtection, asyncHandler } = require("./utils");
 const router = express.Router();
 const { userValidators, loginValidators } = require("../validations");
 
-router.get('/games/:gameId/reviews', asyncHandler(async (req, res) => {
+router.get('/games/:gameId/reviews', csrfProtection, asyncHandler(async (req, res) => {
     const books = await db.Review.findAll();
-    res.render('review-list', { title: 'Reviews', reviews });
+    res.render('review-list', { csrfToken: req.csrfToken(), reviews });
   }));
 
 router.get('/games/gameId/reviews/add', csrfProtection, loginUser, (req, res) => {
