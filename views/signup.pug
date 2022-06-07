@@ -1,27 +1,48 @@
-extends layout.pug
-
+html
+  head
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800;900&display=swap" rel="stylesheet")
+    link(rel='stylesheet' href='/stylesheets/signup.css')
+    title GGs - #{title}
 block content
     if errors
-        div
+        div.error-list
             ul
             p The following errors were found:
                 each error in errors
                     li #{error}
 
-    form(action="/users/signup", method="post")
-        div.form-msg-signup Sign up
-            input(type='hidden' name='_csrf' value=csrfToken)
-        div.form-item
-            input(type='text' id='firstName' name='firstName' value=user.firstName placeholder='First Name')
-        div.form-item
-            input(type='text' id='lastName' name='lastName' value=user.lastName placeholder='Last Name')
-        div.form-item
-            input(type='text' id='email' name='email' value=user.email placeholder='Email')
-        div.form-item
-            input(type='text' id='username' name='username' value=user.username placeholder='Username')
-        div.form-item
-            input(type='password' id='password' name='password' placeholder='Password')
-        div.form-item
-            input(type='password' id='confirmPassword' name='confirmPassword' placeholder='confirmPassword')
-        div
-            button.form-button(type='submit') Sign Up!
+    div.content-wrapper
+    p.logo #[span G]Gs - #[span Good]Games
+    p.logo#login Sign Up
+        form(action="/users/signup", method="post")
+            div.form-msg-signup
+                input(type='hidden' name='_csrf' value=csrfToken)
+            div.first-name
+                p.first-name First Name:
+            div.form-item
+                input(type='text' id='firstName' name='firstName' value=user.firstName)
+            div.last-name
+                p.last-name Last Name:
+            div.form-item
+                input(type='text' id='lastName' name='lastName' value=user.lastName)
+            div.email
+                p.email Email:
+            div.form-item
+                input(type='text' id='email' name='email' value=user.email)
+            div.username
+                p.username Username:
+            div.form-item
+                input(type='text' id='username' name='username' value=user.username)
+            div.password
+                p.password Password:
+            div.form-item
+                input(type='password' id='password' name='password')
+            div.confirm-password
+                p.confirm-password Confirm Password:
+            div.form-item
+                input(type='password' id='confirmPassword' name='confirmPassword')
+            div
+                button.form-button(type='submit') Create Account!
+            p.goodgames-inc #[span © 2022 G]Gs - #[span Good]Games, Inc.
