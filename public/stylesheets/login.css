@@ -17,6 +17,7 @@ html {
 
 span {
   font-weight: 300;
+  padding-left: 5px;
 }
 
 nav {
@@ -72,14 +73,11 @@ input[type="submit"] {
   margin: 0 2% 2% 2%;
 }
 
-p {
-  color: #5536ae;
-}
-
 .email {
   margin-bottom: 2px;
   margin-right: 75px;
   display: flex;
+  color: #5536ae;
 }
 
 .password {
@@ -87,6 +85,7 @@ p {
   margin-right: 60px;
   display: flex;
   justify-content: left;
+  color: #5536ae;
 }
 
 .login-button {
@@ -102,6 +101,15 @@ p {
   line-height: 18px;
   font-size: 15px;
   border-width: 1px;
+  border-style: solid;
+  padding: 3px 0px 3px 0px;
+  width: 206px;
+  margin-top: 20px;
+}
+
+#signup-thang {
+  text-decoration: none;
+  color: black;
 }
 
 a:-webkit-any-link {
@@ -113,4 +121,13 @@ a:-webkit-any-link {
   display: flex;
   flex-direction: column;
   margin: 0 35% 0 35%;
+}
+
+.goodgames-inc {
+  margin-left: 55px;
+  margin-top: 22px;
+  display: flex;
+  color: #5536ae;
+  width: 300px;
+  font-weight: bold;
 }
