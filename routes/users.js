@@ -39,7 +39,7 @@ router.post(
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
-      user.hashedPassword = await bcrypt.hash(password, 12);
+      user.password = await bcrypt.hash(password, 12);
       await user.save();
       loginUser(req, res, user);
       res.redirect("/home");
