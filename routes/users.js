@@ -1,4 +1,4 @@
-var express = require("express");
+const express = require("express");
 const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator");
 
@@ -16,7 +16,7 @@ router.get("/", function (req, res, next) {
 router.get("/signup", csrfProtection, (req, res, next) => {
   const user = db.User.build();
   res.render("signup", {
-    title: "gGs - Sign Up",
+    title: "Sign Up",
     user,
     csrfToken: req.csrfToken(),
   });
@@ -46,7 +46,7 @@ router.post(
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render("signup", {
-        title: "gGs - Sign Up",
+        title: "Sign Up",
         user,
         errors,
         csrfToken: req.csrfToken(),
@@ -57,7 +57,7 @@ router.post(
 
 router.get("/login", csrfProtection, (req, res, next) => {
   res.render("login", {
-    title: "gGs - Login",
+    title: "Login",
     csrfToken: req.csrfToken(),
   });
 });
@@ -92,7 +92,7 @@ router.post(
     }
 
     res.render("login", {
-      title: "gGs -Login",
+      title: "Login",
       errors,
       csrfToken: req.csrfToken(),
     });
