@@ -39,7 +39,7 @@ router.post(
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
-      user.hashedPassword = await bcrypt.hash(password, 10);
+      user.hashedPassword = await bcrypt.hash(password, 12);
       await user.save();
       loginUser(req, res, user);
       res.redirect("/home");
@@ -102,7 +102,9 @@ router.post(
 router.get(
   "/demo",
   asyncHandler(async (req, res, next) => {
-    let demoUser = await db.User.findOne({ where: { email: "demo@user.com" } });
+    let demoUser = await db.User.findOne({
+      where: { email: "demouser@demo.com" },
+    });
     loginUser(req, res, demoUser);
     res.redirect("/home");
   })
