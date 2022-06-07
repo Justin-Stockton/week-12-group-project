@@ -1,9 +1,15 @@
-extends layout
-
-block content
-    //- add page specific js
-    script(src="/javascripts/index.js" type="module" defer)
-
-    br
-    h1= title
-    p Welcome to your Project Skeleton
+doctype html
+html
+  head
+      block head
+        title="Express Starter App"
+        link(rel='stylesheet' href='/stylesheets/reset.css')
+  header
+    nav
+        .logo 
+        a.home(href="/") Home
+        a.mygames(href="/gamesRack") My Games
+        a.browsegames(href="/games") Browse Games
+  body
+    block content
+  footer
