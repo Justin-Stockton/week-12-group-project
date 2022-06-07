@@ -17,7 +17,7 @@ const restoreUser = async (req, res, next) => {
         res.locals.authenticated = true;
         res.locals.user = user;
         if (req.path === "/" || req.path === "/users/login") {
-          res.redirect("/app");
+          res.redirect("/home");
         } else {
           next();
         }
