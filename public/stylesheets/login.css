@@ -1,0 +1,45 @@
+.logo {
+  color: #5536AE;
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+}
+
+nav {
+  display: none;
+}
+
+.error-list {
+  background-color: rgba(red, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+form {
+  margin: 0 33% 0 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+}
+
+.form-item {
+  display: flex;
+  margin: 0 2% 2% 2%;
+}
+
+.email {
+  margin-bottom: 2px;
+  margin-right: 50px;
+  display: flex;
+  justify-content: left;
+}
+
+.password {
+  margin-bottom: 2px;
+  margin-right: 39px;
+  display: flex;
+  justify-content: left;
+}

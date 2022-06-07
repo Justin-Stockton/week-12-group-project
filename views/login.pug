@@ -3,19 +3,25 @@ extends layout.pug
 
 block content
   if errors
-    div
+    div.error-list
       ul
       p The following errors were found:
         each error in errors
           li #{error}
-
+  p.logo GGs - GoodGames
+  p.logo Login
+  br
   //- +validationErrorSummary(errors)
   form(action="/users/login", method="post")
-    div.form-msg-login Login
+    div.form-msg-login
       input(type='hidden' name='_csrf' value=csrfToken)
+    div.email
+      p.email Email:
     div.form-item
       input(type='text' id='email' name='email' placeholder='Email')
+    div.password
+      p.password Password:
     div.form-item
       input(type='password' id='password' name='password' placeholder='Password')
     div
-      input(type='submit' value='Logn')
+      input(type='submit' value='Login')
