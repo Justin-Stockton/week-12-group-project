@@ -2,8 +2,8 @@ const express = require("express");
 const { csrfProtection } = require("./utils");
 const router = express.Router();
 
-router.get("/home", csrfProtection, (req, res) => {
-  res.render("home", {
+router.get("/", csrfProtection, (req, res) => {
+  res.render("profile", {
     title: "gGs - Home",
     csrfToken: req.csrfToken(),
   });

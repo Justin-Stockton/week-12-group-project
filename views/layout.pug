@@ -7,9 +7,20 @@ html
   header
     nav
         .logo 
+        a(href="/") GGs - GoodGames
         a.home(href="/") Home
         a.mygames(href="/gamesRack") My Games
         a.browsegames(href="/games") Browse Games
+        input(type="text" placeholder="Search Games")
+        img(src="images/profile-icon.webp" alt="userProfileIcon" style="height:40px;width:40px")
+        div 
+          select(name="")
+            option(value="Profile") Profile
+            option(value="Reviews") Reviews
+            option(value="Favorite Genres") Favorite Genres
+            option(value="Sign Out") Sign out
+        
   body
     block content
   footer
+    div © 2022 GGs - GoodGames, Inc.
