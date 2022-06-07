@@ -40,8 +40,16 @@ const logoutUser = (req, res) => {
   delete req.session.auth;
 };
 
+const requireAuth = (req, res, next) => {
+  if (!res.locals.authenticated) {
+    return res.redirect("/users/login");
+  } else {
+    return next();
+  }
+};
 module.exports = {
   loginUser,
   restoreUser,
   logoutUser,
+  requireAuth,
 };
