@@ -1,4 +1,6 @@
 const { check, validationResult } = require("express-validator");
+const db = require("./db/models");
+
 const loginValidators = [
   check("email")
     .exists({ checkFalsy: true })
