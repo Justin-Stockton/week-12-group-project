@@ -1,9 +1,9 @@
 html {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .logo {
-  color: #5536AE;
+  color: #5536ae;
   display: flex;
   justify-content: center;
   font-size: 24px;
@@ -20,7 +20,7 @@ span {
 }
 
 nav {
-  display: none;
+  /* display: none; */
 }
 
 .error-list {
@@ -41,7 +41,7 @@ form {
 }
 
 input {
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   color: black;
   border-radius: 10px;
   border-width: 1px;
@@ -49,15 +49,15 @@ input {
   font-size: 15px;
 }
 
-input[type = text] {
+input[type="text"] {
   padding: 2px 25px 2px 25px;
 }
 
-input[type = password] {
+input[type="password"] {
   padding: 2px 25px 2px 25px;
 }
 
-input[type = submit] {
+input[type="submit"] {
   padding: 2px 85px 2px 85px;
 }
 
@@ -67,7 +67,7 @@ input[type = submit] {
 }
 
 p {
-  color: #5536AE
+  color: #5536ae;
 }
 
 .email {
@@ -90,13 +90,12 @@ p {
 .signup-button {
   display: flex;
   justify-content: center;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   color: black;
   border-radius: 10px;
   line-height: 18px;
   font-size: 15px;
   border-width: 1px;
-
 }
 
 a:-webkit-any-link {
