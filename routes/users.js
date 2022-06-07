@@ -1,4 +1,4 @@
-var express = require("express");
+const express = require("express");
 const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator");
 
