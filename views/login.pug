@@ -1,6 +1,10 @@
-//- include utils.pug
-extends layout.pug
-
+html
+  head
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800;900&display=swap" rel="stylesheet")
+    link(rel='stylesheet' href='/stylesheets/login.css')
+    title GGs - #{title}
 block content
   if errors
     div.error-list
