@@ -1,2 +1,21 @@
-include utils.pug
+//- include utils.pug
+extends layout.pug
 
+block content
+  if errors
+    div
+      ul
+      p The following errors were found:
+        each error in errors
+          li #{error}
+
+  //- +validationErrorSummary(errors)
+  form(action="/users/login", method="post")
+    div.form-msg-login Login
+      input(type='hidden' name='_csrf' value=csrfToken)
+    div.form-item
+      input(type='text' id='email' name='email' placeholder='Email')
+    div.form-item
+      input(type='password' id='password' name='password' placeholder='Password')
+    div
+      input(type='submit' value='Logn')

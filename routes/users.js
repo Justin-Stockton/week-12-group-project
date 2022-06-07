@@ -77,7 +77,7 @@ router.post(
       if (user !== null) {
         const passwordMatch = await bcrypt.compare(
           password,
-          user.hashedPassword.toString()
+          user.password.toString()
         );
 
         if (passwordMatch) {
