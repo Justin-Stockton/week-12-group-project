@@ -8,20 +8,23 @@ block content
       p The following errors were found:
         each error in errors
           li #{error}
-  p.logo #[span G]Gs - #[span Good]Games
-  p.logo#login Login
-  //- +validationErrorSummary(errors)
-  form(action="/users/login", method="post")
-    div.form-msg-login
-      input(type='hidden' name='_csrf' value=csrfToken)
-    div.email
-      p.email Email:
-    div.form-item
-      input(type='text' id='email' name='email')
-    div.password
-      p.password Password:
-      //- a(href="something").forgotpassword Forgot your password?
-    div.form-item
-      input(type='password' id='password' name='password')
-    div.login-button
-      input(type='submit' value='Login')
+  div.content-wrapper
+    p.logo #[span G]Gs - #[span Good]Games
+    p.logo#login Login
+      form(action="/users/login", method="post")
+        div.form-msg-login
+          input(type='hidden' name='_csrf' value=csrfToken)
+        div.email
+          p.email Email:
+        div.form-item
+          input(type='text' id='email' name='email')
+        div.password
+          p.password Password:
+          //- a(href="something").forgotpassword Forgot your password?
+        div.form-item
+          input(type='password' id='password' name='password')
+        div.login-button
+          input(type='submit' value='Login')
+    div.signup-button
+      a(href="/users/signup")
+        button Sign Up
