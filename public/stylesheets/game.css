@@ -62,3 +62,7 @@ span {
   border: black solid 2px;
   padding: 0 5px 0 15px;
 }
+
+.game-img {
+  border-radius: 10px;
+}
