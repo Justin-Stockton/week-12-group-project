@@ -23,8 +23,7 @@ router.get(
       where: { userId: req.session.auth.userId },
       include: [{ model: Game }]
     });
-    console.log(gamesRacks[0].Game)
-    
+    // console.log(gamesRacks[0].Game)
     res.render("gamesRack", { title: "Games Racks", gamesRacks });
   })
 );

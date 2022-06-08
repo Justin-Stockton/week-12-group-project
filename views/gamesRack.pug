@@ -33,10 +33,14 @@ html
   body
     //- block content
     div
-        ul Currently Playing
-            li #{gamesRacks.userId}
-            li #{gamesRacks.gameId}
+        h2.game-rack Currently Playing
+        each game in gamesRacks
+            p.game-name #{game.Game.name}
+            p.game-image 
+              img(src=game.Game.gameImage)
+            p.game-description #{game.Game.description}
   footer
         div.footer
             a.about-us(href="/about-us") #[span ABOUT] US
             p.goodgames-inc #[span © 2022 G]Gs - #[span Good]Games, Inc.
+
