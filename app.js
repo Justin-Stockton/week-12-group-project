@@ -6,10 +6,11 @@ const logger = require("morgan");
 const { sequelize } = require("./db/models");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
-const indexRouter = require("./routes/index");
+const splashRouter = require("./routes/splash");
 const usersRouter = require("./routes/users");
 const gamesRacksRouter = require("./routes/gameRack");
 const gamesRouter = require("./routes/games");
+const homeRouter = require("./routes/home");
 
 const app = express();
 
@@ -38,10 +39,11 @@ app.use(
 store.sync();
 
 // ==== routes ==== //
-app.use("/", indexRouter);
+app.use("/", splashRouter);
 app.use("/users", usersRouter);
 app.use("/games-racks", gamesRacksRouter);
 app.use("/games", gamesRouter);
+app.use("/home", homeRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
