@@ -8,7 +8,8 @@ block append header
     form(action=`/home/add`, method="post")
         input(type='hidden' name='_csrf' value=csrfToken)
         div.create-gamerack
-        input(type='text' value='New Gamerack Name')
+        input(type='text' placeholder='New Gamerack Name' name="rackName")
+        button Create Rack
     h2.userreviews #{user.username} - Reviews
     h3.userfavoritegames #{user.username} - Favorite Games
     h3.userfavoritegenres #{user.username} - Favorite Game Genres
