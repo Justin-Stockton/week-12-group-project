@@ -1,40 +1,52 @@
 doctype html
 html
   head
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800;900&display=swap" rel="stylesheet")
+    link(rel='stylesheet' href='/stylesheets/splash.css')
+    title GGs - #{title}
   header
-    nav 
-      h1 GGs - GoodGames      
+   nav
+      p.logo GGs - GoodGames
+      div(class="nav-bar-buttons")
+        a.home(href="/home") Home
+        a.mygames(href="/games-racks") My Games
+        a.browsegames(href="/games") Browse Games
   body
     div Summer Gaming
-    div 
+    div
       h2 Discover and Play More
-      button 
+      button
         a(href="/users/signup" role="button" style="text-decoration:none;color:black") Sign-Up With Email
-    div 
+    div
         p Deciding what to play next?
         p What are your friends playing?
-    div 
+    div
         p You're in the right place. Browse our game library and see what other people are saying about the games you're interested in.
         p Chances are your friends are discussing their favorite (or least favorite) games on GGs.
-    div 
-        div 
+    div
+        div
             p What will you discover?
-        div 
+        div
             img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg?t=1641233427", alt="cs:go", style="width:100px;height:80px")
             img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/945360/header.jpg?t=1646296970", alt="amongUs", style="width:100px;height:80px")
             img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/976730/header.jpg?t=1649955774", alt="halo", style="width:100px;height:80px")
             img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/header.jpg?t=1654392401", alt="stray", style="width:100px;height:80px")
             img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1172620/header.jpg?t=1653607222", alt="seaOfThieves", style="width:100px;height:80px")
-        div 
+        div
             img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg?t=1641233427", alt="cs:go", style="width:100px;height:80px")
             img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/945360/header.jpg?t=1646296970", alt="amongUs", style="width:100px;height:80px")
             img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/976730/header.jpg?t=1649955774", alt="halo", style="width:100px;height:80px")
             img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/header.jpg?t=1654392401", alt="stray", style="width:100px;height:80px")
             img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1172620/header.jpg?t=1653607222", alt="seaOfThieves", style="width:100px;height:80px")
-    div 
+    div
       img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/976730/header.jpg?t=1649955774", alt="haloQuote", style="height:20px;width:20px")
       p Quotes
       p "I thought I'd try shooting my way out-- Mix things up a little" - Master Chief
-      
+
     block content
   footer
+    div.footer
+          a.about-us(href="/about-us") #[span ABOUT] US
+          p.goodgames-inc #[span © 2022 G]Gs - #[span Good]Games, Inc.
