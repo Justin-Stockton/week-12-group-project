@@ -16,6 +16,7 @@ html
     each game in games
         a(href=`/games/${game.id}`)
             img.game-imgs(src=game.gameImage)
+        p.game-names #{game.name}
 
 footer
     div.footer
