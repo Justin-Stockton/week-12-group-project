@@ -71,7 +71,6 @@ router.post(
 
 router.post(
   "/:gameId(\\d+)/delete",
-  csrfProtection,
   userValidators,
   asyncHandler(async (req, res, next) => {
     //==== userId ====//

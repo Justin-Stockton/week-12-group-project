@@ -18,6 +18,10 @@ html
       input(type='hidden' name='_csrf' value=csrfToken)
       div.add-to-game-rack
       input(type='submit' value='Add to Game Rack')
+    form(action=`/games/${game.id}/delete`, method="post")
+      input(type='hidden' name='_csrf' value=csrfToken)
+      div.add-to-game-rack
+      input(type='submit' value='Remove from Game Rack')
     h2.game-title #{game.name}
     img.game-img(src=game.gameImage)
     p.description #{game.description}
