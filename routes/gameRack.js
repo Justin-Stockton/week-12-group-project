@@ -16,15 +16,20 @@ router.get(
   csrfProtection,
   restoreUser,
   requireAuth,
-  asyncHandler(async (req, res, next) => {
+  asyncHandler(async (req, res) => {
     //==== getting all games in the Playing Games model ====//
     //==== where the userId is the same as the logged in user ====//
-    const gamesRacks = await PlayingGame.findAll({
-      where: { userId: req.session.auth.userId },
-      include: [{ model: Game }],
-    });
-    // console.log(gamesRacks[0].Game)
-    res.render("gamesRack", { title: "Games Racks", gamesRacks });
+    console.log(res.locals)
+    if (!req.session.auth.userId) {
+      res.redirect("/users/login")
+    } else {
+      const gamesRacks = await PlayingGame.findAll({
+        where: { userId: req.session.auth.userId },
+        include: [{ model: Game }],
+      });
+      // console.log(gamesRacks[0].Game)
+      res.render("gamesRack", { title: "Games Racks", gamesRacks });
+    }
   })
 );
 

@@ -10,10 +10,9 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function(models) {
     User.belongsToMany(models.Game, {through:"Ownership", foreignKey: "userId", otherKey: "gameId"});
     User.hasMany(models.Review, { foreignKey: "userId"});
-    // User.hasOne(models.PlayedGame, { foreignKey: "userId" });
     User.hasOne(models.PlayingGame, { foreignKey: "userId" });
-    // User.hasOne(models.WantedGame, { foreignKey: "userId" });
     User.hasMany(models.Ownership, {foreignKey: "userId"});
+    User.hasMany(models.Rack, {foreignKey: "userId"});
   };
   return User;
 };

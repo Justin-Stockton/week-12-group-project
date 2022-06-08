@@ -32,6 +32,8 @@ const restoreUser = async (req, res, next) => {
 
 const logoutUser = (req, res) => {
   delete req.session.auth;
+  res.clearCookie("_csrf");
+  res.clearCookie("connect.sid", { path: "/" });
 };
 
 const requireAuth = (req, res, next) => {
