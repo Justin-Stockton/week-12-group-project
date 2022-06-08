@@ -25,14 +25,25 @@ nav {
   justify-content: space-between;
   background-color: rgb(31, 29, 29);
 }
+
 .nav-bar-buttons {
   display: flex;
   align-items: center;
 }
 
 .error-list {
-  background-color: rgba(red, 0, 0, 0.2);
-  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  margin: 0 20% 0 20%;
+  padding: 0 45px 0 45px;
+  font-weight: bold;
+  flex-direction: column;
+  background-color: rgba(255, 0, 0, .4);
+  border-radius: 5px;
+}
+
+.error-list > p {
+ font-size: 25px;
 }
 
 form {
@@ -65,7 +76,7 @@ input[type="password"] {
 }
 
 input[type="submit"] {
-  padding: 2px 85px 2px 85px;
+  padding: 2px 88px 2px 89px;
 }
 
 .form-item {
@@ -74,6 +85,7 @@ input[type="submit"] {
 }
 
 .email {
+  margin-top: 3px;
   margin-bottom: 2px;
   margin-right: 75px;
   display: flex;
@@ -81,6 +93,7 @@ input[type="submit"] {
 }
 
 .password {
+  margin-top: 3px;
   margin-bottom: 2px;
   margin-right: 60px;
   display: flex;
@@ -88,8 +101,16 @@ input[type="submit"] {
   color: #5536ae;
 }
 
+.new-to {
+  margin-top: 3px;
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: left;
+  color: #5536ae;
+}
+
 .login-button {
-  margin: 25px 5px 15px 5px;
+  margin: 25px 5px 12px 5px;
 }
 
 .signup-button {
@@ -103,8 +124,8 @@ input[type="submit"] {
   border-width: 1px;
   border-style: solid;
   padding: 3px 0px 3px 0px;
-  width: 206px;
-  margin-top: 20px;
+  width: 211px;
+  margin-top: 2px;
 }
 
 #signup-thang {

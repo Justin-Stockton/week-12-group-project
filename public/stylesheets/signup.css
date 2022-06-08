@@ -1,6 +1,7 @@
 @import './login.css';
 
 .first-name {
+    margin-top: 3px;
     margin-bottom: 2px;
     margin-right: 55px;
     display: flex;
@@ -8,6 +9,7 @@
   }
 
 .last-name {
+    margin-top: 3px;
     margin-bottom: 2px;
     margin-right: 55px;
     display: flex;
@@ -15,6 +17,7 @@
   }
 
 .username {
+    margin-top: 3px;
     margin-bottom: 2px;
     margin-right: 56px;
     display: flex;
@@ -22,8 +25,39 @@
   }
 
 .confirm-password {
+    margin-top: 3px;
     margin-bottom: 2px;
     margin-right: 32px;
     display: flex;
+    color: #5536ae;
+  }
+
+  .form-button {
+    display: flex;
+    justify-content: center;
+    background-color: #d9d9d9;
+    color: black;
+    border-radius: 10px;
+    line-height: 18px;
+    font-size: 15px;
+    border-width: 1px;
+    border-style: solid;
+    padding: 3px 0px 3px 0px;
+    width: 218px;
+    margin-top: 20px;
+  }
+
+  .already-have-account {
+    font-size: 13px;
+    margin-top: 7px;
+    margin-bottom: 2px;
+    margin-right: 8px;
+    display: flex;
+    color: black;
+  }
+
+  #login-text {
+    padding-top: 7px;
+    padding-left: 3px;
     color: #5536ae;
   }
