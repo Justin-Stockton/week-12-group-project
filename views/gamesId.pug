@@ -6,19 +6,17 @@ block append header
     h2.game-reviews #{game.name} Reviews
     form(action=`/games/${game.id}/add`, method="post")
       input(type='hidden' name='_csrf' value=csrfToken)
-      div.add-to-game-rack
-      input(type='submit' value='Add to Game Rack')
+      div.add-to-owned-games
+      input(type='submit' value='Add to Owned Games')
     form(action=`/games/${game.id}/delete`, method="post")
       input(type='hidden' name='_csrf' value=csrfToken)
-      div.add-to-game-rack
-      input(type='submit' value='Remove from Game Rack')
+      div.delete-from-owned-games
+      input(type='submit' value='Remove from Owned Games')
     h2.game-title #{game.name}
     img.game-img(src=game.gameImage)
     p.description #{game.description}
-    h4.rating Average Rating:
-    form(action="/reviews/#{review.id}/add", method="post")
-      div.add-review
-        input(type='submit' value='Write A Review!')
+    //- h4.rating Average Rating:
+    a.review-page-button(href="/reviews") Write a Review!
     .review-zone
       p.user-name-review User Name (not working)
               //-   p.user-name-review #{user.name}
