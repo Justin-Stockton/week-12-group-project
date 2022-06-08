@@ -15,17 +15,11 @@ block append head
 block append header
   body
     div
-
-block append footer
-=======
-        h2.game-rack Currently Playing
+        h2.game-rack Owned Games
         each game in gamesRacks
             p.game-name #{game.Game.name}
             p.game-image 
               img(src=game.Game.gameImage)
             p.game-description #{game.Game.description}
-  footer
-        div.footer
-            a.about-us(href="/about-us") #[span ABOUT] US
-            p.goodgames-inc #[span © 2022 G]Gs - #[span Good]Games, Inc.
-
+block append footer
+  
