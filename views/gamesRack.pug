@@ -9,30 +9,15 @@
 //-         div(class="games-rack")
 
 
-doctype html
-html
-  head
-    link(rel="preconnect" href="https://fonts.googleapis.com")
-    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
-    link(href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800;900&display=swap" rel="stylesheet")
+extends layout.pug
+block append head
     link(rel='stylesheet' href='/stylesheets/gamesRack.css')
-    title GGs - #{title}
-  header
-    nav
-      p.logo #[span G]Gs - #[span Good]Games
-      div(class="nav-bar-buttons")
-        a.home(href="/home") Home
-        a.mygames(href="/games-racks") My Games
-        a.browsegames(href="/games") Browse Games
-        a.login(href="/users/login") Log In
-        a.signup(href="users/signup") Sign Up
-        form(action="/users/logout" method="post")
-            input(type='hidden' name='_csrf' value=csrfToken)
-            div.logout 
-            input(type='submit' value='Log Out')
+block append header
   body
-    //- block content
     div
+
+block append footer
+=======
         h2.game-rack Currently Playing
         each game in gamesRacks
             p.game-name #{game.Game.name}
