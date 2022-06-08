@@ -12,11 +12,10 @@ router.get(
   "/",
   csrfProtection,
   asyncHandler(async (req, res) => {
-    const game = await Game.findAll({ order: [["name", "ASC"]] });
-    // console.log(game);
+    const games = await Game.findAll({ order: [["name", "DESC"]] });
     res.render("games", {
       title: "Games",
-      game,
+      games,
       csrfToken: req.csrfToken(),
     });
   })
@@ -50,7 +49,7 @@ router.get(
 
 router.post(
   "/:gameId(\\d+)/add",
-  userValidators,
+  requireAuth,
   asyncHandler(async (req, res, next) => {
     //==== userId ====//
     const userId = req.session.auth.userId;
@@ -71,7 +70,7 @@ router.post(
 
 router.post(
   "/:gameId(\\d+)/delete",
-  userValidators,
+  requireAuth,
   asyncHandler(async (req, res, next) => {
     //==== userId ====//
 
