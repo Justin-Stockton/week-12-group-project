@@ -43,5 +43,18 @@ router.post(
     res.render("/");
   })
 );
+router.post(
+  "/delete",
+  csrfProtection,
+  restoreUser,
+  requireAuth,
+  asyncHandler(async (req, res, next) => {
+    const userId = req.session.auth.userId;
+    await Rack.destroy({
+      where: { userId },
+    });
+    res.render("/");
+  })
+);
 
 module.exports = router;
