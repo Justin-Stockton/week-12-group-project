@@ -10,12 +10,14 @@ const { Game, User, PlayingGame, Review } = db;
 
 router.get(
   "/",
+  csrfProtection,
   asyncHandler(async (req, res) => {
     const game = await Game.findAll({ order: [["name", "ASC"]] });
     // console.log(game);
     res.render("games", {
       title: "Games",
       game,
+      csrfToken: req.csrfToken(),
     });
   })
 );
@@ -24,7 +26,6 @@ router.get(
 
 router.get(
   "/:gameId(\\d+)",
-  csrfProtection,
   asyncHandler(async (req, res) => {
     const gameId = parseInt(req.params.gameId, 10);
     // console.log(gameId);
@@ -47,9 +48,8 @@ router.get(
 
 // ==== adds the game to the rack ====//
 
-router.get(
+router.post(
   "/:gameId(\\d+)/add",
-  csrfProtection,
   userValidators,
   asyncHandler(async (req, res, next) => {
     //==== userId ====//
@@ -69,7 +69,7 @@ router.get(
 
 // ==== deletes the game from the rack ==== //
 
-router.get(
+router.post(
   "/:gameId(\\d+)/delete",
   csrfProtection,
   userValidators,

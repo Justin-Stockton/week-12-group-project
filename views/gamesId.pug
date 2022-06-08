@@ -14,9 +14,10 @@ html
         a.browsegames(href="/games") Browse Games
   body
     h2.game-reviews #{game.name} Reviews
-    form(action="/games/#{game.id}/add", method="post")
+    form(action=`/games/${game.id}/add`, method="post")
+      input(type='hidden' name='_csrf' value=csrfToken)
       div.add-to-game-rack
-        input(type='submit' value='Add to Game Rack')
+      input(type='submit' value='Add to Game Rack')
     h2.game-title #{game.name}
     img.game-img(src=game.gameImage)
     p.description #{game.description}
@@ -31,12 +32,13 @@ html
 
               //-   p.first-review #{reviews}
       if auth
-        form(action="/reviews/#{review.id}/edit", method="post")
-          div.edit-review
-            input(type='submit' value='Edit Your Review')
-        form(action="/reviews/#{review.id}/delete", method="post")
-          div.delete-review
-            input(type='submit' value='Delete Your Review')
+        //- form(action=`/reviews/${review.id}/edit`, method="post")
+        //-   div.edit-review
+        //-   input(type='submit' value='Edit Your Review')
+        //- form(action=`/reviews/${review.id}/delete`, method="post")
+        //-   input(type='hidden' name='_csrf' value=csrfToken)
+        //-   div.delete-review
+        //-   input(type='submit' value='Delete Your Review')
   footer
     div.footer
       a.about-us(href="/about-us") #[span ABOUT] US
