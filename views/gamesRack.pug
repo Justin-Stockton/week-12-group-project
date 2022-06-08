@@ -34,8 +34,10 @@ html
     //- block content
     div
         ul Currently Playing
-            li #{gamesRacks.userId}
-            li #{gamesRacks.gameId}
+            li #{gamesRacks[0].Game.name}
+            li 
+              img(src=gamesRacks[0].Game.gameImage)
+            li #{gamesRacks[0].Game.description}
   footer
         div.footer
             a.about-us(href="/about-us") #[span ABOUT] US
