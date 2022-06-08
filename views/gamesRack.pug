@@ -1,9 +1,39 @@
-extends layout.pug
+//- extends layout.pug
 
-block content
-    div(class="games-rack-wrapper")
-        div(class="games-rack-links")
-            a(id="want-to-play") test
-            a(id="currently-playing") test
-            a(id="previously-played") test
-        div(class="games-rack")
+//- block content
+//-     div(class="games-rack-wrapper")
+//-         div(class="games-rack-links")
+//-             a(id="want-to-play") test
+//-             a(id="currently-playing") test
+//-             a(id="previously-played") test
+//-         div(class="games-rack")
+
+
+doctype html
+html
+  head
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800;900&display=swap" rel="stylesheet")
+    link(rel='stylesheet' href='/stylesheets/gamesRack.css')
+    title GGs - #{title}
+  header
+    nav
+      p.logo GGs - GamesRack
+      div(class="nav-bar-buttons")
+        a.home(href="/") Home
+        a.mygames(href="/games-racks") My Games
+        a.browsegames(href="/games") Browse Games
+  body
+    //- block content
+    div
+        ul Already Played
+            li test game 1
+    div 
+        ul Currently Playing 
+            li test game 2
+    div 
+        ul Want to Play
+            li test game 3
+            
+  footer
