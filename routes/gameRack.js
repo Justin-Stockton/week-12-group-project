@@ -15,22 +15,12 @@ router.get(
   "/",
   csrfProtection,
   asyncHandler(async (req, res, next) => {
-    // console.log(req.session.auth.userId);
     const gamesRacks = await PlayingGame.findAll({
       where: { userId: req.session.auth.userId },
     });
-    console.log(gamesRacks);
-    res.json({ gamesRacks });
+    // res.json({ gamesRacks });
     res.render("gamesRack", { title: "Games Racks" });
   })
 );
 
-console.log("res.locals");
-
-// let playing = await PlayingGame.findAll({
-//   where: { userId: 6 },
-// });
-
-// res.json({ playing });
-// })
 module.exports = router;
