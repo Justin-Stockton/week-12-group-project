@@ -1,8 +1,24 @@
-extends layout.pug
-
-block content
-    header 
-
-    body
-        div 
-        
+html
+  head
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800;900&display=swap" rel="stylesheet")
+    link(rel='stylesheet' href='/stylesheets/game.css')
+    title GGs - #{game.name}
+  header
+    nav
+      p.logo #[span G]Gs - #[span Good]Games
+      div(class="nav-bar-buttons")
+        a.home(href="/") Home
+        a.mygames(href="/games-racks") My Games
+        a.browsegames(href="/games") Browse Games
+  body
+    h2.game-reviews #{game.name} Reviews
+    h2.game-title #{game.name}
+    img.game-img(src=game.gameImage)
+    p.description #{game.description}
+    h4.rating Average Rating:
+  footer
+    div.footer
+        a.about-us(href="/about-us") #[span ABOUT] US
+        p.goodgames-inc #[span © 2022 G]Gs - #[span Good]Games, Inc.

@@ -37,7 +37,7 @@ router.get(
     }
     const auth = req.session.auth;
 
-    res.render("gamesId", { game, user, reviews, auth });
+    res.render("gamesId", { title: "Game", game, user, reviews, auth });
   })
 );
 
