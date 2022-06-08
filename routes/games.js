@@ -6,6 +6,8 @@ const router = express.Router();
 const { userValidators, loginValidators } = require("../validations");
 const { Game, User, PlayingGame, Review } = db;
 
+// ==== This will display all the games in the DB ==== //
+
 router.get(
   "/",
   asyncHandler(async (req, res) => {
@@ -18,6 +20,8 @@ router.get(
   })
 );
 
+// ==== This displays individual game pages unless there is no game then 404 ==== //
+
 router.get(
   "/:gameId(\\d+)",
   csrfProtection,
@@ -25,7 +29,7 @@ router.get(
     const gameId = parseInt(req.params.gameId, 10);
     // console.log(gameId);
     const game = await Game.findByPk(gameId);
-    const user = await User.findByPk(); //we need a number here
+    const user = await User.findByPk(req.session.auth.userId);
     const reviews = await Review.findAll({
       where: {
         gameId,
@@ -41,8 +45,12 @@ router.get(
   })
 );
 
+// ==== adds the game to the rack ====//
+
 router.post(
   "/:gameId(\\d+)/add",
+  csrfProtection,
+  userValidators,
   asyncHandler(async (req, res, next) => {
     //==== userId ====//
     const userId = req.session.auth.userId;
@@ -59,14 +67,21 @@ router.post(
   })
 );
 
+// ==== deletes the game from the rack ==== //
+
 router.post(
   "/:gameId(\\d+)/delete",
+  csrfProtection,
+  userValidators,
   asyncHandler(async (req, res, next) => {
     //==== userId ====//
+
     const userId = req.session.auth.userId;
+
     //==== gameId ====//
+
     const gameId = parseInt(req.params.gameId, 10);
-    //
+    //==== delete the game ==== //
     await PlayingGame.destroy({
       where: { userId, gameId },
     });
