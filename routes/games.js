@@ -25,7 +25,7 @@ router.get(
     const gameId = parseInt(req.params.gameId, 10);
     // console.log(gameId);
     const game = await Game.findByPk(gameId);
-    const user = await User.findByPk();
+    const user = await User.findByPk(); //we need a number here
     const reviews = await Review.findAll({
       where: {
         gameId,

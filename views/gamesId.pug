@@ -15,13 +15,29 @@ html
   body
     h2.game-reviews #{game.name} Reviews
     form(action="/games/#{game.id}/add", method="post")
-        div.add-to-game-rack
-          input(type='submit' value='Add to Game Rack')
+      div.add-to-game-rack
+        input(type='submit' value='Add to Game Rack')
     h2.game-title #{game.name}
     img.game-img(src=game.gameImage)
     p.description #{game.description}
     h4.rating Average Rating:
+    form(action="/reviews/#{review.id}/add", method="post")
+      div.add-review
+        input(type='submit' value='Write A Review!')
+    .review-zone
+      p.user-name-review User Name (not working)
+              //-   p.user-name-review #{user.name}
+      p.review User review of Game (not working)
+
+              //-   p.first-review #{reviews}
+      if auth
+        form(action="/reviews/#{review.id}/edit", method="post")
+          div.edit-review
+            input(type='submit' value='Edit Your Review')
+        form(action="/reviews/#{review.id}/delete", method="post")
+          div.delete-review
+            input(type='submit' value='Delete Your Review')
   footer
     div.footer
-        a.about-us(href="/about-us") #[span ABOUT] US
-        p.goodgames-inc #[span © 2022 G]Gs - #[span Good]Games, Inc.
+      a.about-us(href="/about-us") #[span ABOUT] US
+      p.goodgames-inc #[span © 2022 G]Gs - #[span Good]Games, Inc.
