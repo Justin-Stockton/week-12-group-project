@@ -21,15 +21,11 @@ router.get(
     //==== where the userId is the same as the logged in user ====//
     const gamesRacks = await PlayingGame.findAll({
       where: { userId: req.session.auth.userId },
+      include: [{ model: Game }]
     });
-    let gameId = await gamesRacks.gameId
-    console.log(gameId)
-    const games = await Game.findAll({
-      where: { id: 15 }
-    })
-    console.log(games)
+    console.log(gamesRacks[0].Game)
     
-    res.render("gamesRack", { title: "Games Racks", gamesRacks, games });
+    res.render("gamesRack", { title: "Games Racks", gamesRacks });
   })
 );
 
