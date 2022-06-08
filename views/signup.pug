@@ -15,7 +15,7 @@ block content
 
     div.content-wrapper
     p.logo #[span G]Gs - #[span Good]Games
-    p.logo#login Sign Up
+    p.logo#login CREATE AN ACCOUNT
         form(action="/users/signup", method="post")
             div.form-msg-signup
                 input(type='hidden' name='_csrf' value=csrfToken)
@@ -45,4 +45,7 @@ block content
                 input(type='password' id='confirmPassword' name='confirmPassword')
             div
                 button.form-button(type='submit') Create Account!
+            div.already-have-account
+                p.already-have-account Already have an account?
+                a(href="/users/login")#login-text Login!
             p.goodgames-inc #[span © 2022 G]Gs - #[span Good]Games, Inc.
