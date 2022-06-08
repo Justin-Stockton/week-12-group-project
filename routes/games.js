@@ -47,7 +47,7 @@ router.get(
 
 // ==== adds the game to the rack ====//
 
-router.post(
+router.get(
   "/:gameId(\\d+)/add",
   csrfProtection,
   userValidators,
@@ -63,13 +63,13 @@ router.post(
       gameId,
       timePlayed,
     });
-    res.redirect("/games-racks");
+    res.redirect("/games");
   })
 );
 
 // ==== deletes the game from the rack ==== //
 
-router.post(
+router.get(
   "/:gameId(\\d+)/delete",
   csrfProtection,
   userValidators,
@@ -85,7 +85,7 @@ router.post(
     await PlayingGame.destroy({
       where: { userId, gameId },
     });
-    res.redirect("/games-racks");
+    res.redirect("/games");
   })
 );
 module.exports = router;
