@@ -20,7 +20,13 @@ html
             div.logout 
             input(type='submit' value='Log Out')
   body
-    block content
+    h1.username #{user.username}
+    h2.usergameracks #{user.username}'s Gameracks
+    a(href="/games-racks") gamerack
+    h2.userreviews #{user.username}'s Reviews
+    h3.userfavoritegames #{user.username}'s Favorite Games
+    h3.userfavoritegenres #{user.username}'s Favorite Game Genres
+
   footer
     div.footer
         a.about-us(href="/about-us") #[span ABOUT] US
