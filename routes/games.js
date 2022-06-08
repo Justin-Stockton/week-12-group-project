@@ -41,7 +41,7 @@ router.get(
   })
 );
 
-router.post(
+router.get(
   "/:gameId(\\d+)/add",
   asyncHandler(async (req, res, next) => {
     //==== userId ====//
@@ -55,7 +55,22 @@ router.post(
       gameId,
       timePlayed,
     });
-    res.redirect("/games");
+    res.redirect("/games-racks");
+  })
+);
+
+router.get(
+  "/:gameId(\\d+)/delete",
+  asyncHandler(async (req, res, next) => {
+    //==== userId ====//
+    const userId = req.session.auth.userId;
+    //==== gameId ====//
+    const gameId = parseInt(req.params.gameId, 10);
+    //
+    await PlayingGame.destroy({
+      where: { userId, gameId },
+    });
+    res.redirect("/games-racks");
   })
 );
 module.exports = router;
