@@ -1,11 +1,12 @@
 const express = require("express");
-const { csrfProtection } = require("./utils");
 const router = express.Router();
+const { asyncHandler } = require("./utils");
 
-router.get("/home", csrfProtection, (req, res) => {
+// THIS IS THE USER HOME PAGE - USER PROFILE PAGE
+
+router.get("/", (req, res) => {
   res.render("home", {
-    title: "gGs - Home",
-    csrfToken: req.csrfToken(),
+    title: "Home"
   });
 });
 
