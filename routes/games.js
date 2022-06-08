@@ -49,7 +49,6 @@ router.get(
 
 router.post(
   "/:gameId(\\d+)/add",
-  requireAuth,
   asyncHandler(async (req, res, next) => {
     //==== userId ====//
     const userId = req.session.auth.userId;
@@ -70,7 +69,6 @@ router.post(
 
 router.post(
   "/:gameId(\\d+)/delete",
-  requireAuth,
   asyncHandler(async (req, res, next) => {
     //==== userId ====//
 
