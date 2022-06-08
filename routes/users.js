@@ -82,7 +82,7 @@ router.post(
 
         if (passwordMatch) {
           loginUser(req, res, user);
-          return res.redirect("/home");
+          return;
         }
       }
 
