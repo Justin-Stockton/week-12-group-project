@@ -1,5 +1,5 @@
 const express = require("express");
-const { loginUser, logoutUser, requireAuth } = require("../auth");
+const { requireAuth, restoreUser } = require("../auth");
 const db = require("../db/models");
 const { csrfProtection, asyncHandler } = require("./utils");
 const router = express.Router();
@@ -25,6 +25,8 @@ router.get(
 
 router.get(
   "/:gameId(\\d+)",
+  requireAuth,
+  restoreUser,
   asyncHandler(async (req, res) => {
     const gameId = parseInt(req.params.gameId, 10);
     // console.log(gameId);
@@ -49,6 +51,8 @@ router.get(
 
 router.post(
   "/:gameId(\\d+)/add",
+  requireAuth,
+  restoreUser,
   asyncHandler(async (req, res, next) => {
     //==== userId ====//
     const userId = req.session.auth.userId;
@@ -69,6 +73,8 @@ router.post(
 
 router.post(
   "/:gameId(\\d+)/delete",
+  requireAuth,
+  restoreUser,
   asyncHandler(async (req, res, next) => {
     //==== userId ====//
 
