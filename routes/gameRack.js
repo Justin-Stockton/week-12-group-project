@@ -28,20 +28,4 @@ router.get(
   })
 );
 
-router.post(
-  "/add",
-  csrfProtection,
-  restoreUser,
-  requireAuth,
-  asyncHandler(async (req, res, next) => {
-    const { rackName } = req.body;
-    const newRack = Rack.build({
-      name: rackName,
-      userId: req.session.auth.userId,
-      csrfToken: req.csrfToken(),
-    });
-    res.render("/");
-  })
-);
-
 module.exports = router;
