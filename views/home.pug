@@ -3,14 +3,14 @@ block append head
     link(rel='stylesheet' href='/stylesheets/home.css')
 block append header
   body
-    h1.username #{user.username}
-    h2.usergameracks #{user.username}'s Owned Games
-    form(action=`/games-racks/add`, method="post")
+    h1.username #{user.username} - Home 
+    h2.usergameracks #{user.username} - Owned Games
+    form(action=`/home/add`, method="post")
         input(type='hidden' name='_csrf' value=csrfToken)
         div.create-gamerack
-        input(type='text' value='Gamerack Name')
-    h2.userreviews #{user.username}'s Reviews
-    h3.userfavoritegames #{user.username}'s Favorite Games
-    h3.userfavoritegenres #{user.username}'s Favorite Game Genres
+        input(type='text' value='New Gamerack Name')
+    h2.userreviews #{user.username} - Reviews
+    h3.userfavoritegames #{user.username} - Favorite Games
+    h3.userfavoritegenres #{user.username} - Favorite Game Genres
 
 block append footer
