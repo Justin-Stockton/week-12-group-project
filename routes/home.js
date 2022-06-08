@@ -3,7 +3,7 @@ const router = express.Router();
 const { csrfProtection, asyncHandler } = require("./utils");
 const { requireAuth, restoreUser } = require("../auth");
 const db = require("../db/models");
-const { User } = db;
+const { User, Rack } = db;
 
 // THIS IS THE USER HOME PAGE - USER PROFILE PAGE
 
