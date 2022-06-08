@@ -37,11 +37,11 @@ router.get(
     }
     const auth = req.session.auth;
 
-    res.render("gamesId", { title: "Game", game, user, reviews, auth });
+    res.render("gamesId", { title: `${game.name}`, game, user, reviews, auth });
   })
 );
 
-router.get(
+router.post(
   "/:gameId(\\d+)/add",
   asyncHandler(async (req, res, next) => {
     //==== userId ====//
@@ -59,7 +59,7 @@ router.get(
   })
 );
 
-router.get(
+router.post(
   "/:gameId(\\d+)/delete",
   asyncHandler(async (req, res, next) => {
     //==== userId ====//
