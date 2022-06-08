@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     Game.hasMany(models.Review, {foreignKey: "gameId"});
     Game.hasMany(models.PlayingGame, {foreignKey: "gameId"})
     Game.belongsToMany(models.User, {through:"Ownership", foreignKey: "gameId", otherKey: "userId"});
+    Game.hasMany(models.Rack, {foreignKey: "gameId"});
   };
   return Game;
 };
