@@ -1,5 +1,5 @@
 const express = require("express");
-const { loginUser, logoutUser } = require("../auth");
+const { loginUser, logoutUser, requireAuth } = require("../auth");
 const db = require("../db/models");
 const { csrfProtection, asyncHandler } = require("./utils");
 const router = express.Router();
@@ -10,7 +10,7 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const game = await Game.findAll({ order: [["name", "ASC"]] });
-    console.log(game);
+    // console.log(game);
     res.render("games", {
       title: "Games",
       game,
@@ -23,7 +23,7 @@ router.get(
   csrfProtection,
   asyncHandler(async (req, res) => {
     const gameId = parseInt(req.params.gameId, 10);
-    console.log(gameId);
+    // console.log(gameId);
     const game = await Game.findByPk(gameId);
     const user = await User.findByPk();
     const reviews = await Review.findAll({
@@ -41,4 +41,21 @@ router.get(
   })
 );
 
+router.post(
+  "/:gameId(\\d+)/add",
+  asyncHandler(async (req, res, next) => {
+    //==== userId ====//
+    const userId = req.session.auth.userId;
+    //==== gameId ====//
+    const gameId = parseInt(req.params.gameId, 10);
+    //==== timePlayed hard coded for now users will be able to update that====//
+    const timePlayed = 0;
+    const game = await PlayingGame.create({
+      userId,
+      gameId,
+      timePlayed,
+    });
+    res.redirect("/games");
+  })
+);
 module.exports = router;
