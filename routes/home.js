@@ -3,7 +3,7 @@ const router = express.Router();
 const { csrfProtection, asyncHandler } = require("./utils");
 const { requireAuth, restoreUser } = require("../auth");
 const db = require("../db/models");
-const { User } = db;
+const { User, Rack } = db;
 
 // THIS IS THE USER HOME PAGE - USER PROFILE PAGE
 
@@ -28,17 +28,21 @@ router.get(
 
 router.post(
   "/add",
-  csrfProtection,
+  // csrfProtection,
   restoreUser,
   requireAuth,
   asyncHandler(async (req, res, next) => {
     const { rackName } = req.body;
-    const newRack = await Rack.build({
+    console.log(rackName)
+    const newRack = await Rack.create({
       name: rackName,
       userId: req.session.auth.userId,
-      csrfToken: req.csrfToken(),
+      // csrfToken: req.csrfToken(),
     });
-    res.render("/");
+    res.render("home", {
+      title: "Home",
+      // csrfToken: req.csrfToken(),
+    });
   })
 );
 
