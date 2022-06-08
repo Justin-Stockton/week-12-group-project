@@ -7,7 +7,7 @@ const { csrfProtection, asyncHandler } = require("./utils");
 const db = require("../db/models");
 const { requireAuth, restoreUser } = require("../auth");
 
-const { User, PlayingGame, PlayedGame, WantedGame } = db;
+const { User, PlayingGame, Game } = db;
 
 //==== get playing rack for a user ====//
 
@@ -22,8 +22,14 @@ router.get(
     const gamesRacks = await PlayingGame.findAll({
       where: { userId: req.session.auth.userId },
     });
-
-    res.render("gamesRack", { title: "Games Racks", gamesRacks });
+    let gameId = await gamesRacks.gameId
+    console.log(gameId)
+    const games = await Game.findAll({
+      where: { id: 15 }
+    })
+    console.log(games)
+    
+    res.render("gamesRack", { title: "Games Racks", gamesRacks, games });
   })
 );
 
