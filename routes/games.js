@@ -4,7 +4,8 @@ const db = require("../db/models");
 const { csrfProtection, asyncHandler } = require("./utils");
 const router = express.Router();
 const { userValidators, loginValidators } = require("../validations");
-const { Game, User, PlayingGame, Review } = db;
+const { route } = require("./home");
+const { Game, User, PlayingGame, Review, RacksToGame } = db;
 
 // ==== This will display all the games in the DB ==== //
 
@@ -71,7 +72,7 @@ router.post(
       });
       res.redirect("/games");
     } else {
-      res.redirect("/games-racks");
+      res.redirect("/MyGames");
     }
   })
 );
@@ -97,4 +98,39 @@ router.post(
     res.redirect("/games");
   })
 );
+
+// ==== This should add a game to RacksToGames ==== //
+
+router.post(
+  "/:gameId(\\d+)/:rackId(\\d+)/add",
+  requireAuth,
+  restoreUser,
+  asyncHandler(async (req, res, next) => {
+    // console.log(req.params);
+    //==== gameId ====//
+    const gameId = parseInt(req.params.gameId, 10);
+    //==== rackId ====//
+    const rackId = parseInt(req.params.rackId, 10);
+
+    await RacksToGame.create({ rackId, gameId });
+    res.redirect("/games");
+  })
+);
+
+router.post(
+  "/:gameId(\\d+)/:rackId(\\d+)/delete",
+  requireAuth,
+  restoreUser,
+  asyncHandler(async (req, res, next) => {
+    // console.log(req.params);
+    //==== gameId ====//
+    const gameId = parseInt(req.params.gameId, 10);
+    //==== rackId ====//
+    const rackId = parseInt(req.params.rackId, 10);
+
+    await RacksToGame.destroy({ where: { rackId, gameId } });
+    res.redirect("/home");
+  })
+);
+
 module.exports = router;
