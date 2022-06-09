@@ -14,9 +14,10 @@ router.get(
     //------  get the rackId -------//
     const myRackId = parseInt(req.params.myGameRack, 10);
     //------  find all games with my rackId -------//
-    const games = await Game.findAll({ where: {
-      rackId: myRackId
-    } });
+    const games = await RacksToGame.findAll({ 
+      where: {rackId: myRackId},
+      include: [{model:Game}]
+     });
 
     //------  gets user information -------//
     const user = await User.findByPk(req.session.auth.userId);
@@ -34,7 +35,7 @@ router.get(
 
     const rackName = await Rack.findByPk(myRackId)
 
-    res.render("my-rack", { title: `${rackName}`, games, user, auth });
+    res.render("my-game-rack", { title: `${rackName}`, games, user, auth });
   })
 );
 
