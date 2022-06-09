@@ -7,18 +7,13 @@ module.exports = (sequelize, DataTypes) => {
       tags: DataTypes.STRING,
       gameImage: DataTypes.STRING,
       description: DataTypes.TEXT,
+      rackId: DataTypes.INTEGER,
     },
     {}
   );
   Game.associate = function (models) {
     Game.hasMany(models.Review, { foreignKey: "gameId" });
-    Game.hasMany(models.PlayingGame, { foreignKey: "gameId" });
-    Game.belongsToMany(models.User, {
-      through: "Ownership",
-      foreignKey: "gameId",
-      otherKey: "userId",
-    });
-    Game.hasMany(models.Rack, { foreignKey: "gameId" });
+    Game.belongsTo(models.Rack, { foreignKey: "rackId" });
   };
   return Game;
 };

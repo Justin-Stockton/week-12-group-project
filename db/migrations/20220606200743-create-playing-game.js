@@ -18,10 +18,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: "Games" },
       },
-      rackId: {
-        type: Sequelize.INTEGER,
-        references: { model: "Racks" },
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

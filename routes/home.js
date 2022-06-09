@@ -28,26 +28,34 @@ router.get(
 
 router.post(
   "/add",
-  csrfProtection,
+  // csrfProtection,
   restoreUser,
   requireAuth,
   asyncHandler(async (req, res, next) => {
     const { rackName } = req.body;
 
-    // console.log(rackName)
-    const newRack = await Rack.create({
-      name: rackName,
-      userId: req.session.auth.userId,
+    console.log(rackName);
+    const userRacks = await Rack.findAll({
+      where: { name: rackName },
     });
+    console.log(userRacks);
+    if (!userRacks[0]) {
+      const newRack = await Rack.create({
+        name: rackName,
+        userId: req.session.auth.userId,
+      });
+    } else {
+      res.render("home");
+    }
 
-    const games = await Game.findAll()
+    const games = await Game.findAll();
     // console.log(games);
     const gamesList = [];
     res.render("home", {
       title: "Home",
-      csrfToken: req.csrfToken(),
+      // csrfToken: req.csrfToken(),
       games,
-      gamesList
+      gamesList,
     });
   })
 );
