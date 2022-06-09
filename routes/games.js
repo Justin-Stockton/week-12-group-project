@@ -165,8 +165,8 @@ router.post(
   asyncHandler(async (req, res) => {
     const gameId = parseInt(req.params.gameId, 10);
     const userId = req.session.auth.userId;
-    const { review } = req.body;
-    await Review.put({ where: { gameId, userId, review } });
+    const { updatedReview } = req.body;
+    await Review.update({ where: { gameId, userId, review: updatedReview } });
     res.redirect(`/games/${gameId}`);
   })
 );

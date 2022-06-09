@@ -8,9 +8,15 @@ block append header
       p #{review.User.username}
       p #{review.review}
       p #{review.updatedAt}
-      form(action=`/games/${game.id}/review/${review.id}/delete`, method="post")
-        input(type='hidden' name='_csrf' value=csrfToken)
-        button delete
+      - if(review.User.username == user.username)
+          form(action=`/games/${game.id}/review/${review.id}/delete`, method="post")
+            input(type='hidden' name='_csrf' value=csrfToken)
+            button delete
+      - if(review.User.username == user.username)
+          form(action=`/games/${game.id}/review/${review.id}/update`, method="post")
+            input(type='hidden' name='_csrf' value=csrfToken)
+            textarea(value="updatedReview" id="updatedReview")
+            button update
     form(action=`/games/${game.id}/add`, method="post")
       input(type='hidden' name='_csrf' value=csrfToken)
       div.add-to-owned-games
