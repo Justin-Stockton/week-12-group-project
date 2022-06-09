@@ -31,14 +31,13 @@ router.get(
         and tie that to their user id ==== */
 
 router.post(
-  "/add",
-  // csrfProtection,
+  "/",
+  csrfProtection,
   restoreUser,
   requireAuth,
   asyncHandler(async (req, res, next) => {
     const { rackName } = req.body;
-
-    console.log(rackName.length);
+    // console.log(rackName.length);
     const userRacks = await Rack.findAll({
       where: { name: rackName },
     });
@@ -48,17 +47,25 @@ router.post(
         userId: req.session.auth.userId,
       });
     } else {
-      res.render("home");
+      res.render("home", {
+        title: "Home",
+        csrfToken: req.csrfToken(),
+      });
     }
+    
+    
+    const racks = await Rack.findAll({
+      where: {userId: req.session.auth.userId}
+    })
+    console.log(racks.name)
 
-    const games = await Game.findAll();
+
+    // const games = await Game.findAll();
     // console.log(games);
-    const gamesList = [];
     res.render("home", {
       title: "Home",
-      // csrfToken: req.csrfToken(),
-      games,
-      gamesList,
+      csrfToken: req.csrfToken(),
+      racks,
     });
   })
 );
