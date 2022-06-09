@@ -166,7 +166,8 @@ router.post(
     const gameId = parseInt(req.params.gameId, 10);
     const userId = req.session.auth.userId;
     const { updatedReview } = req.body;
-    await Review.update({ where: { gameId, userId, review: updatedReview } });
+    // const review = await Review.findAll({ where: { gameId, userId }})
+    await Review.update({ where: { gameId, userId, review: updatedReview }});
     res.redirect(`/games/${gameId}`);
   })
 );
