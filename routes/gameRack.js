@@ -27,7 +27,7 @@ router.get(
         where: { userId: req.session.auth.userId },
         include: [{ model: Game }],
       });
-      res.render("gamesRack", { title: "Games Racks", gamesRacks, rack });
+      res.render("gamesRack", { title: "Games Racks", gamesRacks });
     }
   })
 );

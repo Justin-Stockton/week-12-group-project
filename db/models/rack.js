@@ -10,6 +10,11 @@ module.exports = (sequelize, DataTypes) => {
   );
   Rack.associate = function (models) {
     Rack.belongsTo(models.User, { foreignKey: "userId" });
+    Rack.belongsToMany(models.Game, {
+      through: "RacksToGame",
+      foreignKey: "gameId",
+      otherKey: "rackId",
+    });
   };
   return Rack;
 };

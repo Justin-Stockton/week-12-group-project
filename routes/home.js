@@ -20,7 +20,7 @@ router.get(
     res.render("home", {
       title: "Home",
       users,
-      racks,
+      // racks,
       csrfToken: req.csrfToken(),
     });
   })
