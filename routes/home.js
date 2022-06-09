@@ -3,7 +3,7 @@ const router = express.Router();
 const { csrfProtection, asyncHandler } = require("./utils");
 const { requireAuth, restoreUser } = require("../auth");
 const db = require("../db/models");
-const { User, Rack, Game } = db;
+const { User, Rack, Game, RacksToGame } = db;
 
 // THIS IS THE USER HOME PAGE - USER PROFILE PAGE
 
@@ -20,7 +20,7 @@ router.get(
     res.render("home", {
       title: "Home",
       users,
-      // racks,
+      racks,
       csrfToken: req.csrfToken(),
     });
   })
