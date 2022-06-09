@@ -98,28 +98,20 @@ router.post(
   })
 );
 
-// ==== BELOW THIS LINE IS ALL THE REVIEW STUFF ====//
+// ==== BELOW THIS LINE IS ALL THE REVIEW ROUTE STUFF ====//
 
+// no user auth or restore user
 router.get('/:gameId(\\d+)/reviews', csrfProtection, asyncHandler(async (req, res) => {
-    const reviews = await Review.findAll();
-    res.render('review-list', {
-      csrfToken: req.csrfToken(),
-      reviews });
-  }));
-
-router.get('/:gameId(\\d+)/reviews/add', csrfProtection, loginUser, (req, res) => {
-  {} =
-  req.body
-
-  const review = Review.create();
-
-
-
-  res.render('review-add', {
-    review: 'Add Review',
-    csrfToken: req.csrfToken(),
+  const gameId = parseInt(req.params.gameId, 10);
+  const reviews = await Review.findAll({
+    where: { gameId }
   });
-});
-
+  const game = await Game.findByPk(gameId)
+  res.render('review-list', {
+    csrfToken: req.csrfToken(),
+    reviews,
+    game
+  });
+}));
 
 module.exports = router;
