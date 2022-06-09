@@ -38,8 +38,7 @@ router.get(
       where: {
         gameId,
       },
-      include: User
-
+      include: User,
     });
     if (!game) {
       res.redirect("/404");
@@ -136,25 +135,55 @@ router.post(
 
 //posting a review
 
-router.post("/:gameId(\\d+)/review/add", requireAuth, restoreUser, asyncHandler(async(req, res) => {
-  const gameId = parseInt(req.params.gameId, 10);
-  const userId = req.session.auth.userId
-  const {review} = req.body
+router.post(
+  "/:gameId(\\d+)/review/add",
+  requireAuth,
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    const gameId = parseInt(req.params.gameId, 10);
+    const userId = req.session.auth.userId;
+    const { review } = req.body;
 
-  await Review.create({gameId, userId, review})
-  res.redirect(`/games/${gameId}`)
-}))
+    const userReviews = await Review.findAll({
+      where: { userId: userId, gameId: gameId },
+    });
+    if (!userReviews[0]) {
+      await Review.create({ gameId, userId, review });
+      res.redirect(`/games/${gameId}`);
+    } else {
+      res.redirect("/MyGames");
+    }
+  })
+);
+
+// ==== update reveiw ==== //
+
+router.post(
+  "/:gameId(\\d+)/review/:reviewId(\\d+)/update",
+  requireAuth,
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    const gameId = parseInt(req.params.gameId, 10);
+    const userId = req.session.auth.userId;
+    const { review } = req.body;
+    await Review.put({ where: { gameId, userId, review } });
+    res.redirect(`/games/${gameId}`);
+  })
+);
 
 //deleting a review
 
-router.post("/:gameId(\\d+)/review/:reviewId(\\d+)/delete", requireAuth, restoreUser, asyncHandler(async(req, res) => {
-  const gameId = parseInt(req.params.gameId, 10);
-  const userId = req.session.auth.userId
-  const {review} = req.body
+router.post(
+  "/:gameId(\\d+)/review/:reviewId(\\d+)/delete",
+  requireAuth,
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    const gameId = parseInt(req.params.gameId, 10);
+    const userId = req.session.auth.userId;
 
-  await Review.destroy({where: {gameId, userId, review} })
-  res.redirect(`/games/${gameId}`)
-}))
-
+    await Review.destroy({ where: { gameId, userId } });
+    res.redirect(`/games/${gameId}`);
+  })
+);
 
 module.exports = router;
