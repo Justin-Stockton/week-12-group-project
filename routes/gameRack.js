@@ -28,7 +28,7 @@ router.get(
         include: [{ model: Game }],
       });
 
-      res.render("gamesRack", { title: "Games Racks", gamesRacks, rack });
+      res.render("gamesRack", { title: "Games Racks", gamesRacks });
 
     }
   })

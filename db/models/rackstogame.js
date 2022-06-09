@@ -9,8 +9,16 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   RacksToGame.associate = function (models) {
-    RacksToGame.belongsToMany(models.Game, { foreignKey: "gameId" });
-    RacksToGame.belongsToMany(models.Rack, { foreignKey: "rackId" });
+    RacksToGame.belongsToMany(models.Rack, {
+      through: "RacksToGame",
+      foreignKey: "rackId",
+      otherKey: "gameId",
+    });
+    RacksToGame.belongsToMany(models.Game, {
+      through: "RacksToGame",
+      foreignKey: "gameId",
+      otherKey: "rackId",
+    });
   };
   return RacksToGame;
 };

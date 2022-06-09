@@ -12,7 +12,11 @@ module.exports = (sequelize, DataTypes) => {
   );
   Game.associate = function (models) {
     Game.hasMany(models.Review, { foreignKey: "gameId" });
-    Game.belongsTo(models.Rack, { foreignKey: "rackId" });
+    Game.belongsToMany(models.Rack, {
+      through: "RacksToGame",
+      foreignKey: "gameId",
+      otherKey: "rackId",
+    });
   };
   return Game;
 };
