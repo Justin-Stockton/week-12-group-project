@@ -6,7 +6,7 @@ block append header
   body
     div
         h2.game-rack Owned Games
-        each game in gamesRacks
+        each game in myGames
             p.game-name #{game.Game.name}
             p.game-image
               img(src=game.Game.gameImage)
