@@ -34,7 +34,7 @@ router.get(
 
     const rackName = await Rack.findByPk(myRackId)
 
-    res.render("my-rack", { title: `${rackName}`, games, user, auth });
+    res.render("my-game-rack", { title: `${rackName}`, games, user, auth });
   })
 );
 
