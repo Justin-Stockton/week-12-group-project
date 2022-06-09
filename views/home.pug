@@ -1,13 +1,15 @@
 extends layout.pug
 block append head
-    link(rel='stylesheet' href='/stylesheets/home.css')
+  link(rel='stylesheet' href='/stylesheets/home.css')
 block append header
   body
     h1.username Welcome #{user.username}!
-    form(action=`/home/add`, method="post")
-        input(type='hidden' name='_csrf' value=csrfToken)
-        div.create-gamerack
-        input(type='text' placeholder='New Gamerack Name' name="rackName")
-        button Create Rack
+    form(action=`/home`, method="post")
+      input(type='hidden' name='_csrf' value=csrfToken)
+      div.create-gamerack
+      input(type='text' placeholder='New Gamerack Name' name="rackName")
+      button Create Rack
+    each rack in racks
+      p #{rack.name}
 
 block append footer
