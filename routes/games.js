@@ -10,6 +10,7 @@ const { Game, User, PlayingGame, Review } = db;
 
 router.get(
   "/",
+  restoreUser,
   csrfProtection,
   asyncHandler(async (req, res) => {
     const games = await Game.findAll({ order: [["name", "ASC"]] });
