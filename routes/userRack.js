@@ -37,3 +37,5 @@ router.get(
     res.render("my-rack", { title: `${rackName}`, games, user, auth });
   })
 );
+
+module.exports = router;
