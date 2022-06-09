@@ -28,20 +28,20 @@ router.get(
 
 router.post(
   "/add",
-  // csrfProtection,
+  csrfProtection,
   restoreUser,
   requireAuth,
   asyncHandler(async (req, res, next) => {
     const { rackName } = req.body;
-    console.log(rackName)
+    const games = [];
+    // console.log(rackName)
     const newRack = await Rack.create({
       name: rackName,
       userId: req.session.auth.userId,
-      // csrfToken: req.csrfToken(),
     });
     res.render("home", {
       title: "Home",
-      // csrfToken: req.csrfToken(),
+      csrfToken: req.csrfToken(),
     });
   })
 );
