@@ -147,13 +147,12 @@ router.post("/:gameId(\\d+)/review/add", requireAuth, restoreUser, asyncHandler(
 
 //deleting a review
 
-router.post("/:gameId(\\d+)/review/delete", requireAuth, restoreUser, asyncHandler(async(req, res) => {
+router.post("/:gameId(\\d+)/review/:reviewId(\\d+)/delete", requireAuth, restoreUser, asyncHandler(async(req, res) => {
   const gameId = parseInt(req.params.gameId, 10);
   const userId = req.session.auth.userId
   const {review} = req.body
-  const reviewId = await Review.fin
 
-  await Review.destroy({gameId, userId, review})
+  await Review.destroy({where: {gameId, userId, review} })
   res.redirect(`/games/${gameId}`)
 }))
 
