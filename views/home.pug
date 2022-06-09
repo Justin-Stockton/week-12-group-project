@@ -6,7 +6,7 @@ block append header
     h1.username Welcome #{user.username}!
     each rack in racks
       div
-        a.game-rack-link(href="/home" style="color:black") #{rack.name}
+        a.game-rack-link(href=`/my-game-racks/${rack.id}` style="color:black") #{rack.name}
     form(action=`/home`, method="post")
       input(type='hidden' name='_csrf' value=csrfToken)
       div.create-gamerack
