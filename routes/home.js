@@ -13,10 +13,14 @@ router.get(
   restoreUser,
   csrfProtection,
   asyncHandler(async (req, res) => {
+    const racks = await Rack.findAll({
+      where: { userId: req.session.auth.userId },
+    });
     const users = await User.findAll({ order: [["username", "DESC"]] });
     res.render("home", {
       title: "Home",
       users,
+      racks,
       csrfToken: req.csrfToken(),
     });
   })
