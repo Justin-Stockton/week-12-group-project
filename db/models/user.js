@@ -13,12 +13,11 @@ module.exports = (sequelize, DataTypes) => {
   );
   User.associate = function (models) {
     User.belongsToMany(models.Game, {
-      through: "Ownership",
+      through: "PlayingGames",
       foreignKey: "userId",
       otherKey: "gameId",
     });
     User.hasMany(models.Review, { foreignKey: "userId" });
-    User.hasOne(models.PlayingGame, { foreignKey: "userId" });
 
     User.hasMany(models.Rack, { foreignKey: "userId" });
   };

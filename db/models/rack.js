@@ -10,8 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Rack.associate = function (models) {
     Rack.belongsTo(models.User, { foreignKey: "userId" });
-    Rack.belongsTo(models.Game, { foreignKey: "gameId" });
-    Rack.hasMany(models.PlayingGame, { foreignKey: "rackId" });
+    // Rack.hasMany(models.Game, { foreignKey: "rackId" });
   };
   return Rack;
 };
