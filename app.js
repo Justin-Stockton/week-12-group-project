@@ -12,6 +12,7 @@ const gamesRacksRouter = require("./routes/gameRack");
 const gamesRouter = require("./routes/games");
 const homeRouter = require("./routes/home");
 const aboutUsRouter = require("./routes/aboutUs");
+const userRackRouter = require("./routes/userRacks");
 
 const app = express();
 
@@ -46,6 +47,7 @@ app.use("/MyGames", gamesRacksRouter);
 app.use("/games", gamesRouter);
 app.use("/home", homeRouter);
 app.use("/about-us", aboutUsRouter);
+app.use("/my-game-racks", userRackRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
