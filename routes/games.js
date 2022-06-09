@@ -97,4 +97,29 @@ router.post(
     res.redirect("/games");
   })
 );
+
+// ==== BELOW THIS LINE IS ALL THE REVIEW STUFF ====//
+
+router.get('/:gameId(\\d+)/reviews', csrfProtection, asyncHandler(async (req, res) => {
+    const reviews = await Review.findAll();
+    res.render('review-list', {
+      csrfToken: req.csrfToken(),
+      reviews });
+  }));
+
+router.get('/:gameId(\\d+)/reviews/add', csrfProtection, loginUser, (req, res) => {
+  {} =
+  req.body
+
+  const review = Review.create();
+
+
+
+  res.render('review-add', {
+    review: 'Add Review',
+    csrfToken: req.csrfToken(),
+  });
+});
+
+
 module.exports = router;
