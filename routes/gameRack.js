@@ -23,11 +23,13 @@ router.get(
     if (!req.session.auth.userId) {
       res.redirect("/users/login");
     } else {
-      const gamesRacks = await PlayingGame.findAll({
+      const myGames = await PlayingGame.findAll({
         where: { userId: req.session.auth.userId },
         include: [{ model: Game }],
       });
+
       res.render("gamesRack", { title: "Games Racks", gamesRacks });
+
     }
   })
 );

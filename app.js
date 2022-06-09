@@ -42,7 +42,7 @@ store.sync();
 // ==== routes ==== //
 app.use("/", splashRouter);
 app.use("/users", usersRouter);
-app.use("/games-racks", gamesRacksRouter);
+app.use("/MyGames", gamesRacksRouter);
 app.use("/games", gamesRouter);
 app.use("/home", homeRouter);
 app.use("/about-us", aboutUsRouter);
