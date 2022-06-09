@@ -44,6 +44,24 @@ module.exports = {
     createdAt: new Date(),
      updatedAt: new Date()
   },
+  {
+    firstName: 'Derp',
+    lastName: 'Thompson',
+    username: 'DerpyDerp',
+    email: 'derp@gmail.com',
+    password: 'derppassword',
+    createdAt: new Date(),
+     updatedAt: new Date()
+  },
+  {
+    firstName: 'Chad',
+    lastName: 'Chadwich',
+    username: 'CHADDDDD',
+    email: 'chad@gmail.com',
+    password: 'chadpassword',
+    createdAt: new Date(),
+     updatedAt: new Date()
+  },
   ], {});
   },
 
