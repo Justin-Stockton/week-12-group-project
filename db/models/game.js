@@ -7,7 +7,6 @@ module.exports = (sequelize, DataTypes) => {
       tags: DataTypes.STRING,
       gameImage: DataTypes.STRING,
       description: DataTypes.TEXT,
-      rackId: DataTypes.INTEGER,
     },
     {}
   );

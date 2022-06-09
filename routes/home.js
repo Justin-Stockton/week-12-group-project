@@ -13,10 +13,14 @@ router.get(
   restoreUser,
   csrfProtection,
   asyncHandler(async (req, res) => {
+    const racks = await Rack.findAll({
+      where: { userId: req.session.auth.userId },
+    });
     const users = await User.findAll({ order: [["username", "DESC"]] });
     res.render("home", {
       title: "Home",
       users,
+      racks,
       csrfToken: req.csrfToken(),
     });
   })
@@ -34,12 +38,11 @@ router.post(
   asyncHandler(async (req, res, next) => {
     const { rackName } = req.body;
 
-    console.log(rackName);
+    console.log(rackName.length);
     const userRacks = await Rack.findAll({
       where: { name: rackName },
     });
-    console.log(userRacks);
-    if (!userRacks[0]) {
+    if (!userRacks[0] && rackName.length > 0) {
       const newRack = await Rack.create({
         name: rackName,
         userId: req.session.auth.userId,
