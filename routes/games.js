@@ -12,7 +12,7 @@ router.get(
   "/",
   csrfProtection,
   asyncHandler(async (req, res) => {
-    const games = await Game.findAll({ order: [["name", "DESC"]] });
+    const games = await Game.findAll({ order: [["name", "ASC"]] });
     res.render("games", {
       title: "Games",
       games,
