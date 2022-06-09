@@ -3,7 +3,7 @@ const router = express.Router();
 const { csrfProtection, asyncHandler } = require("./utils");
 const { requireAuth, restoreUser } = require("../auth");
 const db = require("../db/models");
-const { User, Rack } = db;
+const { User, Rack, Game } = db;
 
 // THIS IS THE USER HOME PAGE - USER PROFILE PAGE
 
@@ -28,20 +28,26 @@ router.get(
 
 router.post(
   "/add",
-  // csrfProtection,
+  csrfProtection,
   restoreUser,
   requireAuth,
   asyncHandler(async (req, res, next) => {
     const { rackName } = req.body;
-    console.log(rackName)
+
+    // console.log(rackName)
     const newRack = await Rack.create({
       name: rackName,
       userId: req.session.auth.userId,
-      // csrfToken: req.csrfToken(),
     });
+
+    const games = await Game.findAll()
+    // console.log(games);
+    const gamesList = [];
     res.render("home", {
       title: "Home",
-      // csrfToken: req.csrfToken(),
+      csrfToken: req.csrfToken(),
+      games,
+      gamesList
     });
   })
 );
