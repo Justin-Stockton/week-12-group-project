@@ -12,7 +12,7 @@ router.get(
   "/",
   csrfProtection,
   asyncHandler(async (req, res) => {
-    const games = await Game.findAll({ order: [["name", "DESC"]] });
+    const games = await Game.findAll({ order: [["name", "ASC"]] });
     res.render("games", {
       title: "Games",
       games,
@@ -59,13 +59,19 @@ router.post(
     //==== gameId ====//
     const gameId = parseInt(req.params.gameId, 10);
     //==== timePlayed hard coded for now users will be able to update that====//
-    const timePlayed = 0;
-    const game = await PlayingGame.create({
-      userId,
-      gameId,
-      timePlayed,
+    const userGames = await PlayingGame.findAll({
+      where: { userId: userId, gameId: gameId },
     });
-    res.redirect("/games");
+    console.log(userGames);
+    if (!userGames[0]) {
+      const game = await PlayingGame.create({
+        userId,
+        gameId,
+      });
+      res.redirect("/games");
+    } else {
+      res.redirect("/games-racks");
+    }
   })
 );
 
