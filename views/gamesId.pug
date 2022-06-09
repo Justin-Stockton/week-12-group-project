@@ -4,6 +4,10 @@ block append head
 block append header
   body
     h2.game-reviews #{game.name} Reviews
+    each review in reviews
+      p #{review.User.username}
+      p #{review.review}
+      p #{review.updatedAt}
     form(action=`/games/${game.id}/add`, method="post")
       input(type='hidden' name='_csrf' value=csrfToken)
       div.add-to-owned-games
@@ -16,7 +20,10 @@ block append header
     img.game-img(src=game.gameImage)
     p.description #{game.description}
     //- h4.rating Average Rating:
-    a.review-page-button(href="/reviews") Write a Review!
+    form(action=`/games/${game.id}/review/add`, method="post") Write a Review!
+      input(type='hidden' name='_csrf' value=csrfToken)
+      textarea(name="review" id="review")
+      button submit
     .review-zone
       p.user-name-review User Name (not working)
               //-   p.user-name-review #{user.name}

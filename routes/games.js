@@ -38,8 +38,9 @@ router.get(
       where: {
         gameId,
       },
-    });
+      include: User
 
+    });
     if (!game) {
       res.redirect("/404");
     }
@@ -132,5 +133,29 @@ router.post(
     res.redirect("/home");
   })
 );
+
+//posting a review
+
+router.post("/:gameId(\\d+)/review/add", requireAuth, restoreUser, asyncHandler(async(req, res) => {
+  const gameId = parseInt(req.params.gameId, 10);
+  const userId = req.session.auth.userId
+  const {review} = req.body
+
+  await Review.create({gameId, userId, review})
+  res.redirect(`/games/${gameId}`)
+}))
+
+//deleting a review
+
+router.post("/:gameId(\\d+)/review/delete", requireAuth, restoreUser, asyncHandler(async(req, res) => {
+  const gameId = parseInt(req.params.gameId, 10);
+  const userId = req.session.auth.userId
+  const {review} = req.body
+  const reviewId = await Review.fin
+
+  await Review.destroy({gameId, userId, review})
+  res.redirect(`/games/${gameId}`)
+}))
+
 
 module.exports = router;
