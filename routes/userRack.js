@@ -16,10 +16,21 @@ router.get(
     //------  get the rackId -------//
     const myRackId = parseInt(req.params.myGameRack, 10);
     //------  find all games with my rackId -------//
-    const games = await RacksToGame.findAll({
-      where: { rackId: myRackId },
-      include: [{ model: Game }],
+    const gameLinks = await RacksToGame.findAll({
+      where: { rackId: myRackId }
     });
+    
+
+      const gameIds = gameLinks.map((game) => {
+        return game.dataValues.gameId
+      })
+      console.log(gameIds)
+
+      const games = await Game.findAll({
+        where: { id: gameIds }
+      })
+      console.log(games)
+
 
     //------  gets user information -------//
     const user = await User.findByPk(req.session.auth.userId);
@@ -54,21 +65,21 @@ router.get(
   })
 );
 
-//------  DELETE route for individual game racks -------//
-router.post(
-  "/:myGameRack(\\d+)",
-  requireAuth,
-  restoreUser,
-  asyncHandler(async (req, res) => {
-    const myRackId = parseInt(req.params.myGameRack, 10);
+//------  WE ABANDONED THIS RACK --DELETE route for individual game racks -------//
+// router.post(
+//   "/:myGameRack(\\d+)",
+//   requireAuth,
+//   restoreUser,
+//   asyncHandler(async (req, res) => {
+//     const myRackId = parseInt(req.params.myGameRack, 10);
 
-    const rackInfo = await Rack.findByPk(myRackId)
+//     const rackInfo = await Rack.findByPk(myRackId)
 
-   await RacksToGame.destroy({
-      where: { rackId: myRackId },
-    });
-    res.redirect(`/home`);
-  })
-);
+//    await RacksToGame.destroy({
+//       where: { rackId: myRackId },
+//     });
+//     res.redirect(`/home`);
+//   })
+// );
 
 module.exports = router;
