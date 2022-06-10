@@ -16,7 +16,20 @@ block append body
       h2.game-title #{game.name}
       img.game-img(src=game.gameImage)
       p.description #{game.description}
-    //- h4.rating Average Rating:
+
+
+    each rack in myRacks
+      form(action=`/games/${game.id}/${rack.id}/add`, method="post")
+        input(type='hidden' name='_csrf' value=csrfToken)
+        input(type="hidden" name="rackId" value=rack.id)
+        //- input(type="hidden" name="gameId" value=game.id)
+        p(name="myRacks" required)
+            p #{rack.name}
+        button(id="this-button") Add to this Rack
+
+
+
+
     div(class='all-review-stuff')
       div(class='write-a-review')
         h2.game-reviews #{game.name} Reviews
@@ -40,3 +53,4 @@ block append body
 
 
 block append footer
+//-
