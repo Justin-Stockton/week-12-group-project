@@ -4,7 +4,7 @@ block append head
 block append header
   body
     h1.username Welcome #{user.username}!
-    each rack in racks
+    each rack in racks 
       div
         a.game-rack-link(href=`/my-game-racks/${rack.id}` style="color:black") #{rack.name}
     form(action=`/home`, method="post")
@@ -12,5 +12,14 @@ block append header
       div.create-gamerack
       input(type='text' placeholder='New Gamerack Name' name="rackName")
       button Create Game Rack
+    each rack in racks
+      form(action=`/home/${rack.id}/delete`, method="post")
+        input(type='hidden' name='_csrf' value=csrfToken)
+              //- input(type='hidden' name='rackId' value=rack.id)
+          
+        p #{rack.name} 
+        div.delete-gamerack
+        button Delete This Game Rack
+
 
 block append footer
