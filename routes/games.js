@@ -49,7 +49,7 @@ router.get(
   })
 );
 
-// ==== adds the game to the rack ====//
+// ==== adds the game to the MyGames ====//
 
 router.post(
   "/:gameId(\\d+)/add",
@@ -70,14 +70,14 @@ router.post(
         userId,
         gameId,
       });
-      res.redirect("/games");
+      res.redirect("/MyGames");
     } else {
       res.redirect("/MyGames");
     }
   })
 );
 
-// ==== deletes the game from the rack ==== //
+// ==== deletes the game from MyGames ==== //
 
 router.post(
   "/:gameId(\\d+)/delete",
@@ -166,7 +166,14 @@ router.post(
     const gameId = parseInt(req.params.gameId, 10);
     const userId = req.session.auth.userId;
     const { updatedReview } = req.body;
-    await Review.update({ where: { gameId, userId, review: updatedReview } });
+    const review = await Review.findOne({ where: { gameId, userId } });
+    console.log(JSON.stringify(review));
+
+    review.review = updatedReview;
+
+    await review.save();
+    // await Review.update({ where: { gameId, userId, review: updatedReview } });
+
     res.redirect(`/games/${gameId}`);
   })
 );
