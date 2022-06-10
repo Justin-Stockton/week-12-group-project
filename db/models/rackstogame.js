@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
       through: "RacksToGame",
       foreignKey: "gameId",
       otherKey: "rackId",
+      onDelete: "CASCADE",
+      hooks: true,
     });
   };
   return RacksToGame;
