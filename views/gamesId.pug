@@ -48,7 +48,7 @@ block append body
           - if(review.User.username == user.username)
               form(action=`/games/${game.id}/review/${review.id}/update`, method="post")
                 input(type='hidden' name='_csrf' value=csrfToken)
-                textarea(name="updatedReview" id="updatedReview")
+                textarea(name="updatedReview" id="updatedReview" placeholder=`${review.review}`)
                 button Edit
 
 
