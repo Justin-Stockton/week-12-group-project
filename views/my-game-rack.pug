@@ -7,6 +7,10 @@ block append header
     br
     h1.welcome Welcome #{user.username}! This is your #{rackInfo.name} Gamerack!
     br
-    
+    form(action=`/my-game-racks/${rackInfo.id}`, method="post")
+      input(type='hidden' name='_csrf' value=csrfToken)
+      div.delete-gamerack
+      button Delete Game Rack
+    br
 
 block append footer

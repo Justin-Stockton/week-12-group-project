@@ -6,6 +6,8 @@ const router = express.Router();
 const { userValidators, loginValidators } = require("../validations");
 const { Game, User, PlayingGame, Review, RacksToGame, Rack } = db;
 
+
+//------  GET route for individual game racks -------//
 router.get(
   "/:myGameRack(\\d+)",
   requireAuth,
@@ -49,6 +51,23 @@ router.get(
       rackInfo,
       auth,
     });
+  })
+);
+
+//------  DELETE route for individual game racks -------//
+router.post(
+  "/:myGameRack(\\d+)",
+  requireAuth,
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    const myRackId = parseInt(req.params.myGameRack, 10);
+
+    const rackInfo = await Rack.findByPk(myRackId)
+
+   await RacksToGame.destroy({
+      where: { rackId: myRackId },
+    });
+    res.redirect(`/home`);
   })
 );
 
