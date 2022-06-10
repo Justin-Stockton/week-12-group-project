@@ -3,14 +3,20 @@ block append head
   link(rel='stylesheet' href='/stylesheets/home.css')
 block append header
   body
-    h1.username Welcome #{user.username}!
-    each rack in racks
-      div
-        a.game-rack-link(href=`/my-game-racks/${rack.id}` style="color:black") #{rack.name}
+    h1.username Welcome #{user.username}!        
     form(action=`/home`, method="post")
       input(type='hidden' name='_csrf' value=csrfToken)
       div.create-gamerack
       input(type='text' placeholder='New Gamerack Name' name="rackName")
       button Create Game Rack
+    each rack in racks
+      form(action=`/home/${rack.id}/delete`, method="post")
+        input(type='hidden' name='_csrf' value=csrfToken)
+              //- input(type='hidden' name='rackId' value=rack.id)
+        div  
+          a.game-rack-link(href=`/my-game-racks/${rack.id}` style="color:black") #{rack.name} 
+        div.delete-gamerack
+        button Delete This Game Rack
+
 
 block append footer

@@ -65,19 +65,47 @@ router.post(
 /* ==== This should delete all games racks created where the user will
                 have to enter the name of the rack they want to delete ==== */
 
+// router.post(
+//   "/delete",
+//   csrfProtection,
+//   restoreUser,
+//   requireAuth,
+//   asyncHandler(async (req, res, next) => {
+//     const userId = req.session.auth.userId;
+//     const { rackName } = req.body;
+//     await Rack.destroy({
+//       where: { name: rackName, userId },
+//     });
+//     res.render("/");
+//   })
+// );
+
+
 router.post(
-  "/delete",
-  csrfProtection,
-  restoreUser,
+  "/:rackId(\\d+)/delete",
   requireAuth,
-  asyncHandler(async (req, res, next) => {
-    const userId = req.session.auth.userId;
-    const { rackName } = req.body;
-    await Rack.destroy({
-      where: { name: rackName, userId },
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    const rackId = parseInt(req.params.rackId, 10);
+    // const userId = req.session.auth.userId;
+    // const userId = req.session;
+    // console.log(req.body)
+    // const { rackId } = req.body;
+    // console.log("*******************")
+    const rackInfo = await Rack.findAll({
+      where: {}
+    })
+    // console.log(rackId)
+    // console.log("*******************")
+    // console.log(rackInfo.id)
+   await Rack.destroy({
+      where: { id: rackId }
+      // include: [{model: Rack}]
     });
-    res.render("/");
+    res.redirect(`/home`);
   })
 );
+
+
 
 module.exports = router;
