@@ -5,7 +5,7 @@ const { csrfProtection, asyncHandler } = require("./utils");
 const router = express.Router();
 const { userValidators, loginValidators } = require("../validations");
 const { route } = require("./home");
-const { Game, User, PlayingGame, Review, RacksToGame } = db;
+const { Game, User, PlayingGame, Review, RacksToGame, Rack } = db;
 
 // ==== This will display all the games in the DB ==== //
 
@@ -23,7 +23,16 @@ router.get(
   })
 );
 
-// ==== This displays individual game pages unless there is no game then 404 ==== //
+// ==== This displays individual game pages unless there is no game then 404 ==== //\
+
+router.post(
+  "/:gameId(\\d+)",
+  requireAuth,
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    res.send("Whatever");
+  })
+);
 
 router.get(
   "/:gameId(\\d+)",
@@ -33,7 +42,14 @@ router.get(
     const gameId = parseInt(req.params.gameId, 10);
     // console.log(gameId);
     const game = await Game.findByPk(gameId);
+    const userId = req.session.auth.userId;
     const user = await User.findByPk(req.session.auth.userId);
+    const myRacks = await Rack.findAll({
+      where: {
+        userId,
+      },
+    });
+
     const reviews = await Review.findAll({
       where: {
         gameId,
@@ -45,7 +61,14 @@ router.get(
     }
     const auth = req.session.auth;
 
-    res.render("gamesId", { title: `${game.name}`, game, user, reviews, auth });
+    res.render("gamesId", {
+      title: `${game.name}`,
+      game,
+      user,
+      reviews,
+      auth,
+      myRacks,
+    });
   })
 );
 
@@ -103,20 +126,19 @@ router.post(
 
 router.post(
   "/:gameId(\\d+)/:rackId(\\d+)/add",
-  requireAuth,
-  restoreUser,
-  asyncHandler(async (req, res, next) => {
-    // console.log(req.params);
-    //==== gameId ====//
+  // requireAuth,
+  // restoreUser,
+  asyncHandler(async (req, res) => {
+    // const { rackId } = req.body;
+    // //==== gameId ====//
     const gameId = parseInt(req.params.gameId, 10);
-    //==== rackId ====//
+    // //==== rackId ====//
     const rackId = parseInt(req.params.rackId, 10);
-
     await RacksToGame.create({ rackId, gameId });
-    res.redirect("/games");
+    res.redirect(`/games/${gameId}`);
   })
 );
-
+// ==== This should delete a game to RacksToGames ==== //
 router.post(
   "/:gameId(\\d+)/:rackId(\\d+)/delete",
   requireAuth,
@@ -167,7 +189,7 @@ router.post(
     const userId = req.session.auth.userId;
     const { updatedReview } = req.body;
     const review = await Review.findOne({ where: { gameId, userId } });
-    console.log(JSON.stringify(review));
+    // console.log(JSON.stringify(review));
 
     review.review = updatedReview;
 
