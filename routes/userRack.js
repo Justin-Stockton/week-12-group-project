@@ -36,8 +36,10 @@ router.get(
       res.redirect("/404")
     }
 
+    //------  gets user auth information -------//
     const auth = req.session.auth;
 
+    //------  gets rack information -------//
     const rackInfo = await Rack.findByPk(myRackId);
 
     res.render("my-game-rack", {
