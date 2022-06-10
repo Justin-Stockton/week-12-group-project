@@ -42,7 +42,7 @@ router.post(
       user.password = await bcrypt.hash(password, 12);
       await user.save();
       loginUser(req, res, user);
-      res.redirect("/home");
+      // res.redirect("/home");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render("signup", {
