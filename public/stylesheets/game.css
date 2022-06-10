@@ -56,13 +56,48 @@ span {
 .footer {
   display: flex;
   justify-content: space-between;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   height: 70px;
   align-items: center;
   border: black solid 2px;
   padding: 0 5px 0 15px;
 }
-
+.game-title {
+  display: flex;
+  justify-content: center;
+}
 .game-img {
   border-radius: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.game-stuff {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin: 4rem 10% 7rem 10%;
+  border: black 3px solid;
+}
+
+.buttons-to-add {
+  display: flex;
+  justify-content: space-between;
+}
+
+.write-a-review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.all-review-stuff {
+  display: flex;
+  flex-direction: column;
+}
+.reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
 }

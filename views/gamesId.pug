@@ -1,50 +1,46 @@
 extends layout.pug
 block append head
     link(rel='stylesheet' href='/stylesheets/game.css')
-block append header
+block append body
   body
-    h2.game-reviews #{game.name} Reviews
-    each review in reviews
-      p #{review.User.username}
-      p #{review.review}
-      p #{review.updatedAt}
-      - if(review.User.username == user.username)
-          form(action=`/games/${game.id}/review/${review.id}/delete`, method="post")
-            input(type='hidden' name='_csrf' value=csrfToken)
-            button delete
-      - if(review.User.username == user.username)
-          form(action=`/games/${game.id}/review/${review.id}/update`, method="post")
-            input(type='hidden' name='_csrf' value=csrfToken)
-            textarea(name="updatedReview" id="updatedReview")
-            button update
-    form(action=`/games/${game.id}/add`, method="post")
-      input(type='hidden' name='_csrf' value=csrfToken)
-      div.add-to-owned-games
-      input(type='submit' value='Add to Owned Games')
-    form(action=`/games/${game.id}/delete`, method="post")
-      input(type='hidden' name='_csrf' value=csrfToken)
-      div.delete-from-owned-games
-      input(type='submit' value='Remove from Owned Games')
-    h2.game-title #{game.name}
-    img.game-img(src=game.gameImage)
-    p.description #{game.description}
+    div(class="buttons-to-add")
+      form(action=`/games/${game.id}/add`, method="post")
+        input(type='hidden' name='_csrf' value=csrfToken)
+        div.add-to-owned-games
+        input(type='submit' value='Add to Owned Games')
+      form(action=`/games/${game.id}/delete`, method="post")
+        input(type='hidden' name='_csrf' value=csrfToken)
+        div.delete-from-owned-games
+        input(type='submit' value='Remove from Owned Games')
+    div(class='game-stuff')
+      h2.game-title #{game.name}
+      img.game-img(src=game.gameImage)
+      p.description #{game.description}
     //- h4.rating Average Rating:
-    form(action=`/games/${game.id}/review/add`, method="post") Write a Review!
-      input(type='hidden' name='_csrf' value=csrfToken)
-      textarea(name="review" id="review")
-      button submit
-    .review-zone
-      p.user-name-review User Name (not working)
-              //-   p.user-name-review #{user.name}
-      p.review User review of Game (not working)
+    div(class='all-review-stuff')
+      div(class='write-a-review')
+        h2.game-reviews #{game.name} Reviews
+        div
+            form(action=`/games/${game.id}/review/add`, method="post") Write a Review!
+            div
+              input(type='hidden' name='_csrf' value=csrfToken)
+              textarea(name="review" id="review")
+              div
+              button submit
+      div(class='reviews')
+        each review in reviews
+          p #{review.User.username}
+          p #{review.review}
+          p #{review.updatedAt}
+          - if(review.User.username == user.username)
+              form(action=`/games/${game.id}/review/${review.id}/delete`, method="post")
+                input(type='hidden' name='_csrf' value=csrfToken)
+                button delete
+          - if(review.User.username == user.username)
+              form(action=`/games/${game.id}/review/${review.id}/update`, method="post")
+                input(type='hidden' name='_csrf' value=csrfToken)
+                textarea(name="updatedReview" id="updatedReview")
+                button update
 
-              //-   p.first-review #{reviews}
-      if auth
-        //- form(action=`/reviews/${review.id}/edit`, method="post")
-        //-   div.edit-review
-        //-   input(type='submit' value='Edit Your Review')
-        //- form(action=`/reviews/${review.id}/delete`, method="post")
-        //-   input(type='hidden' name='_csrf' value=csrfToken)
-        //-   div.delete-review
-        //-   input(type='submit' value='Delete Your Review')
+
 block append footer

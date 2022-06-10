@@ -49,7 +49,7 @@ router.get(
   })
 );
 
-// ==== adds the game to the rack ====//
+// ==== adds the game to the MyGames ====//
 
 router.post(
   "/:gameId(\\d+)/add",
@@ -70,14 +70,14 @@ router.post(
         userId,
         gameId,
       });
-      res.redirect("/games");
+      res.redirect("/MyGames");
     } else {
       res.redirect("/MyGames");
     }
   })
 );
 
-// ==== deletes the game from the rack ==== //
+// ==== deletes the game from MyGames ==== //
 
 router.post(
   "/:gameId(\\d+)/delete",
