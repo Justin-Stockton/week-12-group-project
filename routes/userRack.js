@@ -6,7 +6,6 @@ const router = express.Router();
 const { userValidators, loginValidators } = require("../validations");
 const { Game, User, PlayingGame, Review, RacksToGame, Rack } = db;
 
-
 //------  GET route for individual game racks -------//
 router.get(
   "/:myGameRack(\\d+)",
@@ -46,7 +45,7 @@ router.get(
     });
 
     if (!rackIdArray.includes(myRackId)) {
-      res.redirect("/404")
+      res.redirect("/404");
     }
 
     //------  gets user auth information -------//
@@ -65,7 +64,9 @@ router.get(
   })
 );
 
+
 //------  WE ABANDONED THIS RACK --DELETE route for individual game racks -------//
+
 // router.post(
 //   "/:myGameRack(\\d+)",
 //   requireAuth,
@@ -73,11 +74,16 @@ router.get(
 //   asyncHandler(async (req, res) => {
 //     const myRackId = parseInt(req.params.myGameRack, 10);
 
-//     const rackInfo = await Rack.findByPk(myRackId)
+//     console.log("IM RIGHT HERE");
+//     const myRack = await Rack.findByPk({
+//       where: { id: myRackId },
+//     });
 
-//    await RacksToGame.destroy({
+//     const destroy = await RacksToGame.findAll({
 //       where: { rackId: myRackId },
 //     });
+//     await myRack.destroy();
+
 //     res.redirect(`/home`);
 //   })
 // );

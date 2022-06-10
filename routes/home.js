@@ -80,32 +80,50 @@ router.post(
 //   })
 // );
 
-
 router.post(
   "/:rackId(\\d+)/delete",
   requireAuth,
   restoreUser,
   asyncHandler(async (req, res) => {
-    const rackId = parseInt(req.params.rackId, 10);
-    // const userId = req.session.auth.userId;
-    // const userId = req.session;
-    // console.log(req.body)
-    // const { rackId } = req.body;
-    // console.log("*******************")
-    const rackInfo = await Rack.findAll({
-      where: {}
-    })
-    // console.log(rackId)
-    // console.log("*******************")
-    // console.log(rackInfo.id)
-   await Rack.destroy({
-      where: { id: rackId }
-      // include: [{model: Rack}]
+    //   const rackId = parseInt(req.params.rackId, 10);
+    //   // const userId = req.session.auth.userId;
+    //   // const userId = req.session;
+    //   // console.log(req.body)
+    //   // const { rackId } = req.body;
+    //   // console.log("*******************")
+    //   const rackInfo = await Rack.findAll({
+    //     where: {}
+    //   })
+    //   // console.log(rackId)
+    //   // console.log("*******************")
+    //   // console.log(rackInfo.id)
+    //  await Rack.destroy({
+    //     where: { id: rackId }
+    //     // include: [{model: Rack}]
+    //   });
+
+    const myRackId = parseInt(req.params.rackId, 10);
+    console.log(myRackId);
+    console.log(req.body);
+
+    const myRack = await Rack.findAll({
+      where: { id: myRackId },
+    });
+
+    // console.log(myRack);
+
+    // const destroy = await RacksToGame.findAll({
+    //   where: { id: myRackId },
+    // });
+    await RacksToGame.destroy({
+      where: { rackId: myRackId },
+    });
+
+    await Rack.destroy({
+      where: { id: myRackId },
     });
     res.redirect(`/home`);
   })
 );
-
-
 
 module.exports = router;
