@@ -24,12 +24,12 @@ router.get(
       const gameIds = gameLinks.map((game) => {
         return game.dataValues.gameId
       })
-      console.log(gameIds)
+      // console.log(gameIds)
 
       const games = await Game.findAll({
         where: { id: gameIds }
       })
-      console.log(games)
+      // console.log(games)
 
 
     //------  gets user information -------//
