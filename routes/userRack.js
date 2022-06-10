@@ -16,29 +16,20 @@ router.get(
     //------  get the rackId -------//
     const myRackId = parseInt(req.params.myGameRack, 10);
     //------  find all games with my rackId -------//
-    const games = await RacksToGame.findAll({
-      where: { rackId: myRackId },
-      include: Game,
+    const gameLinks = await RacksToGame.findAll({
+      where: { rackId: myRackId }
     });
-    // const games = await PlayingGame.findAll({
-    //     where: { userId: req.session.auth.userId },
-    //     include: [{ model: Game }],
-    //   });
+    
 
-
-      // console.log(games[0].gameId)
-
-
-      const gameIds = games.map((game) => {
+      const gameIds = gameLinks.map((game) => {
         return game.dataValues.gameId
       })
       console.log(gameIds)
 
-      const gamesTwo = await Game.findAll({
+      const games = await Game.findAll({
         where: { id: gameIds }
       })
-
-      console.log(gamesTwo)
+      console.log(games)
 
 
     //------  gets user information -------//
