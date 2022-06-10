@@ -7,6 +7,11 @@ block append header
     br
     h1.welcome Welcome #{user.username}! This is your #{rackInfo.name} Gamerack!
     br
+    each game in games 
+      h3.game-title #{game.name}
+      img.game-image(src=`${game.gameImage}`, alt="game image cover")
+      p.game-description #{game.description}
+      br
 block append footer
 
     //- form(action=`/my-game-racks/${rackInfo.id}`, method="post")
