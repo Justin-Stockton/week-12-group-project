@@ -22,11 +22,10 @@ html
             a.login(href="/users/login") Log In
           if !locals.authenticated
             a.signup(href="users/signup") Sign Up
-
-          form(action="/users/logout" method="post")
+          form(action="/users/logout" method="post").logout-button
               input(type='hidden' name='_csrf' value=csrfToken)
               div.logout
-              input(type='submit' value='Log Out')
+                input(type='submit' value='Log Out')
 
   body
   block body
