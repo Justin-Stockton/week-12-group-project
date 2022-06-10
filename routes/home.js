@@ -52,21 +52,13 @@ router.post(
         csrfToken: req.csrfToken(),
       });
     }
-    
-    
+
     const racks = await Rack.findAll({
-      where: {userId: req.session.auth.userId}
-    })
-    console.log(racks.name)
-
-
-    // const games = await Game.findAll();
-    // console.log(games);
-    res.render("home", {
-      title: "Home",
-      csrfToken: req.csrfToken(),
-      racks,
+      where: { userId: req.session.auth.userId },
     });
+    console.log(racks.name);
+
+    res.redirect("/home");
   })
 );
 
