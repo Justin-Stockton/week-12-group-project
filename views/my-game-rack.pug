@@ -7,10 +7,13 @@ block append header
     br
     h1.welcome Welcome #{user.username}! This is your #{rackInfo.name} Gamerack!
     br
-    each game in games 
+    each game in games
       h3.game-title #{game.name}
       img.game-image(src=`${game.gameImage}`, alt="game image cover")
       p.game-description #{game.description}
+        form(action=`/my-game-racks/${rackInfo.id}/${game.id}/delete`, method="post")
+          P #{rackInfo.id} #{game.id}
+          button(id="This-Is-My-Button" type="submit") Remove This Game
       br
 block append footer
 
