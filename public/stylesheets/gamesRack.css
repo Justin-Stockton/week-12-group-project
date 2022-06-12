@@ -1,1 +1,22 @@
 @import "layout.css";
+
+.game-div:hover {
+    background-color: rgb(159, 159, 159);
+}
+
+.game-div {
+    border-width: 3px;
+    border-style: solid;
+    border-color: #5536ae;
+    border-radius: 10px;
+    padding: 5px;
+    transition: background-color 0.3s;
+}
+
+.game-name {
+    font-weight: bold;
+}
+
+img {
+    border-radius: 10px;
+}
