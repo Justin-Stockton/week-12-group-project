@@ -5,14 +5,14 @@ block append header
 
     body
         h1.games Games
-        if locals.authenticated
-            each game in games
-                a(href=`/games/${game.id}`)
-                    img.game-imgs(src=game.gameImage)
-        if !locals.authenticated
-            each game in games
-                a(href=`/users/login`)
-                    img.game-imgs(src=game.gameImage)
-                
-block append footer
+        div.game-content-wrapper
+            if locals.authenticated
+                each game in games
+                    a(href=`/games/${game.id}`)
+                        img.game-imgs(src=game.gameImage)
+            if !locals.authenticated
+                each game in games
+                    a(href=`/users/login`)
+                        img.game-imgs(src=game.gameImage)
 
+block append footer
