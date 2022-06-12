@@ -4,9 +4,10 @@ block append head
     link(rel='stylesheet' href='/stylesheets/gamesRack.css')
 block append header
   body
-    div
-        h2.game-rack Owned Games
+    h2.game-rack Owned Games
+    div.owned-games-content-wrapper
         each game in myGames
+          div.game-div
             p.game-name #{game.Game.name}
             p.game-image
               img(src=game.Game.gameImage)
