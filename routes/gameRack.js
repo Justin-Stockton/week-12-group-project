@@ -28,7 +28,10 @@ router.get(
         include: [{ model: Game }],
       });
 
-      res.render("gamesRack", { title: "Games Racks", myGames });
+      res.render("gamesRack", {
+        title: "Games Racks",
+        myGames,
+        csrfToken: req.csrfToken()});
     }
   })
 );
