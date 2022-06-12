@@ -70,7 +70,7 @@ span {
 #logout-button {
   color: white;
   font-size: 16px;
-  padding: 0 15px 0 0;
+  padding: 0 15px 0 2px;
   border: none;
   background: none;
 }
