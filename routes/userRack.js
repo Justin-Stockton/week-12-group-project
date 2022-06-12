@@ -58,6 +58,7 @@ router.get(
       user,
       rackInfo,
       auth,
+      gameLinks
     });
   })
 );

@@ -4,14 +4,19 @@ block append head
   link(rel='stylesheet' href='/stylesheets/my-game-rack.css')
 block append header
   body
-    br
-    h1.welcome Welcome #{user.username}! This is your #{rackInfo.name} Gamerack!
-    br
-    each game in games
-      h3.game-title #{game.name}
-      img.game-image(src=`${game.gameImage}`, alt="game image cover")
-      p.game-description #{game.description}
-        form(action=`/my-game-racks/${rackInfo.id}/${game.id}/delete`, method="post")
-          button.add-button-style(id="This-Is-My-Button" type="submit") Remove This Game
+    div.main-content
       br
+      h1.welcome Welcome #{user.username}! This is your #{rackInfo.name} Gamerack!
+      br
+      - if(gameLinks.length === 0)
+        h3.no-games-in-rack Currently, you do not have any games in this rack. Feel free to browse games and add games.
+        div.filler
+      br
+      each game in games
+        h3.game-title #{game.name}
+        img.game-image(src=`${game.gameImage}`, alt="game image cover")
+        p.game-description #{game.description}
+          form(action=`/my-game-racks/${rackInfo.id}/${game.id}/delete`, method="post")
+            button.add-button-style(id="This-Is-My-Button" type="submit") Remove This Game
+        br
 block append footer
