@@ -7,11 +7,11 @@ block append body
       form(action=`/games/${game.id}/add`, method="post")
         input(type='hidden' name='_csrf' value=csrfToken)
         div.add-to-owned-games
-        input(type='submit' value='Add to Owned Games')
+        input.add-button-style(type='submit' value='Add to Owned Games')
       form(action=`/games/${game.id}/delete`, method="post")
         input(type='hidden' name='_csrf' value=csrfToken)
         div.delete-from-owned-games
-        input(type='submit' value='Remove from Owned Games')
+        input.add-button-style(type='submit' value='Remove from Owned Games')
     div(class='game-stuff')
       h2.game-title #{game.name}
       img.game-img(src=game.gameImage)
@@ -23,9 +23,11 @@ block append body
         input(type='hidden' name='_csrf' value=csrfToken)
         input(type="hidden" name="rackId" value=rack.id)
         //- input(type="hidden" name="gameId" value=game.id)
-        p(name="myRacks" required)
-            p #{rack.name}
-        button(id="this-button") Add to this Rack
+        //- p(name="myRacks" required)
+        //-     p #{rack.name}
+        a.game-rack-link(name="rackId" href=`/my-game-racks/${rack.id}` style="color:black") #{rack.name}
+          div
+          button.add-button-style(id="this-button") Add to this Rack
 
 
 
@@ -37,8 +39,7 @@ block append body
             form(action=`/games/${game.id}/review/add`, method="post") Write a Review!
               input(type='hidden' name='_csrf' value=csrfToken)
               textarea(name="review" id="review")
-              button Submit
-              
+       
         each review in reviews
           div(class='posted-review')
             p #{review.User.username}
@@ -47,12 +48,13 @@ block append body
             - if(review.User.username == user.username)
                 form(action=`/games/${game.id}/review/${review.id}/delete`, method="post")
                   input(type='hidden' name='_csrf' value=csrfToken)
-                  button Delete
+                  button.add-button-style Delete
             - if(review.User.username == user.username)
                 form(action=`/games/${game.id}/review/${review.id}/update`, method="post")
                   input(type='hidden' name='_csrf' value=csrfToken)
                   textarea(name="updatedReview" id="updatedReview") #{review.review}
-                  button Edit
+                  button.add-button-style Edit
+
 
 
 block append footer
