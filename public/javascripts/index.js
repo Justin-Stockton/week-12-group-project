@@ -9,6 +9,7 @@ shown.addEventListener("click", async (e) => {
   //   console.log("I was clicked");
   shown.style.display = "none";
   hidden.style.display = "flex";
+  cancel.style.display = "flex";
   return;
 });
 
