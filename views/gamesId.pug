@@ -33,23 +33,26 @@ block append body
     div(class='all-review-stuff')
       div(class='write-a-review')
         h2.game-reviews #{game.name} Reviews
+          div(class='game-review')
             form(action=`/games/${game.id}/review/add`, method="post") Write a Review!
               input(type='hidden' name='_csrf' value=csrfToken)
               textarea(name="review" id="review")
               button Submit
+              
         each review in reviews
-          p #{review.User.username}
-          p #{review.review}
-          p #{review.updatedAt}
-          - if(review.User.username == user.username)
-              form(action=`/games/${game.id}/review/${review.id}/delete`, method="post")
-                input(type='hidden' name='_csrf' value=csrfToken)
-                button Delete
-          - if(review.User.username == user.username)
-              form(action=`/games/${game.id}/review/${review.id}/update`, method="post")
-                input(type='hidden' name='_csrf' value=csrfToken)
-                textarea(name="updatedReview" id="updatedReview") #{review.review}
-                button Edit
+          div(class='posted-review')
+            p #{review.User.username}
+            p #{review.review}
+            p #{review.updatedAt}
+            - if(review.User.username == user.username)
+                form(action=`/games/${game.id}/review/${review.id}/delete`, method="post")
+                  input(type='hidden' name='_csrf' value=csrfToken)
+                  button Delete
+            - if(review.User.username == user.username)
+                form(action=`/games/${game.id}/review/${review.id}/update`, method="post")
+                  input(type='hidden' name='_csrf' value=csrfToken)
+                  textarea(name="updatedReview" id="updatedReview") #{review.review}
+                  button Edit
 
 
 block append footer
