@@ -1,23 +1,40 @@
 @import "layout.css";
 
 .game-div:hover {
-    background-color: rgb(159, 159, 159);
+    background-color: #ffffff;;
+    color: #5436ae;
+    font-weight: 700;
+    box-shadow: 0 0 5px 5px #5536ae, 0 0 0 0 #c3b7e7;
+    opacity: 100%;
+    font-size: 17px;
+    
 }
 
 .game-div {
     border-width: 3px;
     border-style: solid;
     border-color: #5536ae;
+    background-color: #5536ae;
+    color: white;
+    opacity: 98%;
     border-radius: 10px;
     padding: 5px;
-    transition: background-color 0.3s;
+    /* transition: background-color 0.3s; */
+    
+    transition: all 150ms;
     max-width: 460px;
 }
 
 .game-name {
     font-weight: bold;
+    padding: 5px;
+}
+
+.game-description {
+    display: hidden;
 }
 
 img {
     border-radius: 10px;
+    opacity: 90%;
 }
