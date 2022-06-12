@@ -127,6 +127,7 @@
   padding: 5px;
   margin: 5px;
   max-width: 90vw;
+  min-width: 150px;
 }
 
 /* .review-text-container {
@@ -188,3 +189,7 @@
   align-items: center;
 }
 
+.delete-review-form {
+  display: flex;
+  align-self: center;
+}

@@ -46,14 +46,14 @@ block append body
             div.review-text #{review.review}
             div.review-timestamp #{review.updatedAt}
             - if(review.User.username == user.username)
-                form.delete-review-form(action=`/games/${game.id}/review/${review.id}/delete`, method="post")
-                  input(type='hidden' name='_csrf' value=csrfToken)
-                  button.add-button-style-review Delete
-            - if(review.User.username == user.username)
                 form.edit-review-form(action=`/games/${game.id}/review/${review.id}/update`, method="post")
                   input(type='hidden' name='_csrf' value=csrfToken)
                   textarea.review-text-box(name="updatedReview" id="updatedReview") #{review.review}
                   button.add-button-style-review Edit
+            - if(review.User.username == user.username)
+                form.delete-review-form(action=`/games/${game.id}/review/${review.id}/delete`, method="post")
+                  input(type='hidden' name='_csrf' value=csrfToken)
+                  button.add-button-style-review Delete
 
 
 
