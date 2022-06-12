@@ -39,7 +39,7 @@ block append body
             form(action=`/games/${game.id}/review/add`, method="post") Write a Review!
               input(type='hidden' name='_csrf' value=csrfToken)
               textarea(name="review" id="review")
-       
+              button.add-button-style Submit
         each review in reviews
           div(class='posted-review')
             p #{review.User.username}
