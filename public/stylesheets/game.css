@@ -119,7 +119,7 @@
 .review-user {
   font-size: 30px;
   padding: 15px;
-  width: 80px;
+  width: auto;
   font-weight: 600;
 }
 
@@ -142,13 +142,10 @@
   padding: 10px;
 }
 
-
-
 .write-a-review {
   display: flex;
   flex-direction: column;
   max-width: fit-content;
-  padding: ;
   min-width: none;
   align-items: center;
   margin-bottom: 2rem;
@@ -173,7 +170,7 @@
 .posted-review {
   display: flex;
   flex-direction: row;
-  min-width: auto;  
+  min-width: auto;
   margin-bottom: 2rem;
   border-width: 3px;
   border-style: solid;
