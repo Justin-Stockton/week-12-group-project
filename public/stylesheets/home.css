@@ -33,7 +33,7 @@
       font-size: 0.8rem;
       font-weight: 400;
       line-height: 1;
-      margin: 20px; 
+      margin: 20px;
       padding: 1.2em 2.8em;
       text-decoration: none;
       text-align: center;
@@ -45,7 +45,7 @@
   box-shadow: 0 0 5px 5px #5536ae, 0 0 0 0 #c3b7e7;
   color: #5536ae;
   background-color: white;
-  
+
 }
 
 .game-rack-link{
@@ -74,8 +74,6 @@
   position: relative;
     
 }
-
-
 
 .input-box {
   box-sizing:border-box;

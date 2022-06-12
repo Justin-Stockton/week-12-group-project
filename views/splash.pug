@@ -3,40 +3,39 @@ block append head
     link(rel='stylesheet' href='/stylesheets/splash.css')
 block append header
   body
-    div.page-wrapper
-        div.content
-            h2 Discover and Play More
-            div.summer-gaming Summer Gaming
-            button.sign-up-button
-                a(href="/users/signup" role="button" style="text-decoration:none;color:white;") Sign-Up With Email
-            div.top-words
-                p Chances are your friends are discussing their favorite (or least favorite) games on GGs.
-                p You're in the right place. Browse our game library and see what other people are saying about the games you're interested in.
-            div
+    div.content
+        h2 Discover and Play More
+        div.summer-gaming Summer Gaming
+        button.sign-up-button
+            a(href="/users/signup" role="button" style="text-decoration:none;color:white;") Sign-Up With Email
+        div.top-words
+            p Chances are your friends are discussing their favorite (or least favorite) games on GGs.
+            p You're in the right place. Browse our game library and see what other people are saying about the games you're interested in.
+        div
 
-            div.middle
-                p#discover What will you discover?
-                div.deciding-container
-                    p#top-library Deciding what to play next?
-                        div.game-img
-                            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg?t=1641233427", alt="cs:go", style="width:100px;height:80px")
-                            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/945360/header.jpg?t=1646296970", alt="amongUs", style="width:100px;height:80px")
-                            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/976730/header.jpg?t=1649955774", alt="halo", style="width:100px;height:80px")
-                            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/header.jpg?t=1654392401", alt="stray", style="width:100px;height:80px")
-                            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1172620/header.jpg?t=1653607222", alt="seaOfThieves", style="width:100px;height:80px")
-                div.deciding-container
-                    p What are your friends playing?
-                        div.game-img
-                            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg?t=1641233427", alt="cs:go", style="width:100px;height:80px")
-                            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/945360/header.jpg?t=1646296970", alt="amongUs", style="width:100px;height:80px")
-                            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/976730/header.jpg?t=1649955774", alt="halo", style="width:100px;height:80px")
-                            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/header.jpg?t=1654392401", alt="stray", style="width:100px;height:80px")
-                            img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1172620/header.jpg?t=1653607222", alt="seaOfThieves", style="width:100px;height:80px")
-            div.quote-container
-                p#quotes Quotes
-                div.quote-with-img
-                    img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/976730/header.jpg?t=1649955774", alt="haloQuote", style="height:20px;width:20px")
-                    p "I thought I'd try shooting my way out-- Mix things up a little" - Master Chief
+        div.middle
+            p#discover What will you discover?
+            div.deciding-container
+                p#top-library Deciding what to play next?
+                    div.game-img
+                        img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg?t=1641233427", alt="cs:go", style="width:100px;height:80px")
+                        img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/945360/header.jpg?t=1646296970", alt="amongUs", style="width:100px;height:80px")
+                        img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/976730/header.jpg?t=1649955774", alt="halo", style="width:100px;height:80px")
+                        img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/header.jpg?t=1654392401", alt="stray", style="width:100px;height:80px")
+                        img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1172620/header.jpg?t=1653607222", alt="seaOfThieves", style="width:100px;height:80px")
+            div.deciding-container
+                p#friends-playing What are your friends playing?
+                    div.game-img
+                        img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg?t=1641233427", alt="cs:go", style="width:100px;height:80px")
+                        img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/945360/header.jpg?t=1646296970", alt="amongUs", style="width:100px;height:80px")
+                        img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/976730/header.jpg?t=1649955774", alt="halo", style="width:100px;height:80px")
+                        img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/header.jpg?t=1654392401", alt="stray", style="width:100px;height:80px")
+                        img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/1172620/header.jpg?t=1653607222", alt="seaOfThieves", style="width:100px;height:80px")
+        div.quote-container
+            p#quotes Quotes
+            div.quote-with-img
+                img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/976730/header.jpg?t=1649955774", alt="haloQuote", style="height:20px;width:20px")
+                p "I thought I'd try shooting my way out-- Mix things up a little" - Master Chief
 
     block content
 block append footer
