@@ -27,5 +27,12 @@
     box-shadow: 0 0 5px 5px #5536ae, 0 0 0 0 #c3b7e7;
     color: #5536ae;
     background-color: white;
-
 }
+
+.main-content {
+    margin: 0px 25px 0px 25px;
+}
+
+/* .filler {
+    margin: 425px;
+} */
