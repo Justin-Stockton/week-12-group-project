@@ -3,7 +3,9 @@ block append head
   link(rel='stylesheet' href='/stylesheets/home.css')
 block append header
   body
-    h1.username Welcome #{user.username}!
+    h1.username Welcome to #[span Good]Games #{user.username}!
+    - if (racks.length === 0)
+      h3 Create your personal game racks below
     form(action=`/home`, method="post")
       input(type='hidden' name='_csrf' value=csrfToken)
       div.create-gamerack

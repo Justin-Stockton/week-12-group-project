@@ -71,10 +71,22 @@ span {
 #logout-button {
   color: white;
   font-size: 16px;
-  padding: 0 15px 0 0;
+  padding: 0 15px 0 2px;
   border: none;
   background: none;
 }
+
+
+button {
+  color: white;
+  background-color: #5536ae;
+  border-radius: 10px;
+}
+
+input[type="submit"] {
+  color: white;
+  background-color: #5536ae;
+  border-radius: 10px;
 
 .game-content-wrapper {
   display: flex;
@@ -84,9 +96,7 @@ span {
 .game-content-wrapper > * {
   margin-bottom: 1%;
 }
-
 .games {
-  /* font-family: kdam thmor pro; */
   display: flex;
   font-style: italic;
   font-weight: bold;

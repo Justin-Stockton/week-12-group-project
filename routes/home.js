@@ -16,7 +16,7 @@ router.get(
     const racks = await Rack.findAll({
       where: { userId: req.session.auth.userId },
     });
-    const users = await User.findAll({ order: [["username", "DESC"]] });
+    const users = await User.findAll();
     res.render("home", {
       title: "Home",
       users,
