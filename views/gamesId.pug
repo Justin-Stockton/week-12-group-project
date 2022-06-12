@@ -1,6 +1,8 @@
 extends layout.pug
 block append head
     link(rel='stylesheet' href='/stylesheets/game.css')
+    link(src="index.js" type="module")
+
 block append body
   body
     div(class="buttons-to-add")
@@ -49,10 +51,11 @@ block append body
               - const realDate = date.toString().split(/\d+:/)[0]
                 p #{realDate}
             - if(review.User.username == user.username)
-                form.edit-review-form(action=`/games/${game.id}/review/${review.id}/update`, method="post")
+                button.add-button-style-review(id="shown") Edit
+                form.edit-review-form(id = "hidden" action=`/games/${game.id}/review/${review.id}/update`, method="post")
                   input(type='hidden' name='_csrf' value=csrfToken)
                   textarea.review-text-box(name="updatedReview" id="updatedReview") #{review.review}
-                  button.add-button-style-review Edit
+                  button.add-button-style-review Submit
             - if(review.User.username == user.username)
                 form.delete-review-form(action=`/games/${game.id}/review/${review.id}/delete`, method="post")
                   input(type='hidden' name='_csrf' value=csrfToken)
