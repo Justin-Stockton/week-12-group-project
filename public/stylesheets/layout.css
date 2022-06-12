@@ -111,3 +111,7 @@ span {
   color: #1d1c1c;
   flex-wrap: wrap;
 }
+
+.game-div {
+  margin-bottom: 1rem;
+}
