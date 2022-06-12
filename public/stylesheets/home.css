@@ -1,7 +1,7 @@
 @import "layout.css";
 
 .footer {
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   width: 100%;
 }
@@ -12,44 +12,43 @@
   margin-top: 20px;
 }
 
-.username{
+.username {
   display: flex;
   justify-content: center;
   margin-top: 25px;
 }
 
 .home-button {
-      box-sizing: border-box;
-      appearance: none;
-      background-color: transparent;
-      border: 2px solid #5536ae;
-      border-radius: 0.6em;
-      transition: all 150ms ease-in-out;
-      color:#fcfcfc;
-      background-color: #5536ae;
-      cursor: pointer;
-      display: flex;
-      align-self: center;
-      font-size: 0.8rem;
-      font-weight: 400;
-      line-height: 1;
-      margin: 20px;
-      padding: 1.2em 2.8em;
-      text-decoration: none;
-      text-align: center;
-      text-transform: uppercase;
-      font-weight: 700;
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #5536ae;
+  border-radius: 0.6em;
+  transition: all 150ms ease-in-out;
+  color: #fcfcfc;
+  background-color: #5536ae;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
-.home-button:hover{
+.home-button:hover {
   box-shadow: 0 0 5px 5px #5536ae, 0 0 0 0 #c3b7e7;
   color: #5536ae;
   background-color: white;
-
 }
 
-.game-rack-link{
-  display:flex;
+.game-rack-link {
+  display: flex;
   align-self: center;
   text-decoration: none;
   font-size: 1.2rem;
@@ -72,11 +71,10 @@
   transition-duration: 150ms;
   padding: 0;
   position: relative;
-    
 }
 
 .input-box {
-  box-sizing:border-box;
+  box-sizing: border-box;
   display: flex;
   align-self: center;
 }
@@ -87,4 +85,9 @@
   display: flex;
   align-self: center;
   border-radius: 0.6em;
+}
+
+.content-home {
+  /* display: flex; */
+  height: 100vh;
 }
