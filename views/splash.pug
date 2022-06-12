@@ -6,8 +6,12 @@ block append header
     div.content
         h2 Discover and Play More
         div.summer-gaming Summer Gaming
-        button.sign-up-button
-            a(href="/users/signup" role="button" style="text-decoration:none;color:white;") Sign-Up With Email
+        //- button.sign-up-button
+        //-     a.sign-up-button-a(href="/users/signup" role="button" style="text-decoration:none;") Sign-Up With Email
+
+        a.sign-up-a(name="sign-up-button" href=`/users/signup` style="color:black") 
+            div
+            button.sign-up-button(id="signup-button") Sign Up
         div.top-words
             p Chances are your friends are discussing their favorite (or least favorite) games on GGs.
             p You're in the right place. Browse our game library and see what other people are saying about the games you're interested in.
