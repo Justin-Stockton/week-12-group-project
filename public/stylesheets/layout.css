@@ -11,8 +11,9 @@ nav {
   display: flex;
   justify-content: space-between;
   background-color: #5536ae;
-  height: 70px;
+  height: 5rem;
   align-items: center;
+  /* margin-bottom: 1%; */
   /* border: black solid 2px; */
 }
 
@@ -76,7 +77,6 @@ span {
   background: none;
 }
 
-
 button {
   color: white;
   background-color: #5536ae;
@@ -126,4 +126,13 @@ input[type="submit"] {
 
 .game-div {
   margin-bottom: 1rem;
+}
+.deciding-container {
+  box-shadow: 0px 5px 5px #5536ae;
+}
+.page-wrapper {
+  height: 100vh;
+}
+.content {
+  margin-top: 15%;
 }
