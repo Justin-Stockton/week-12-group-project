@@ -12,6 +12,6 @@ block append header
       img.game-image(src=`${game.gameImage}`, alt="game image cover")
       p.game-description #{game.description}
         form(action=`/my-game-racks/${rackInfo.id}/${game.id}/delete`, method="post")
-          button(id="This-Is-My-Button" type="submit") Remove This Game
+          button.add-button-style(id="This-Is-My-Button" type="submit") Remove This Game
       br
 block append footer
