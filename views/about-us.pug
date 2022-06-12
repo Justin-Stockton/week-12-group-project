@@ -4,31 +4,35 @@ block append head
   link(rel='stylesheet' href='/stylesheets/about-us.css')
 block append header
   body
-    section.group
-      p Tim Reinhardt -
-      a.linked-in(href="https://www.linkedin.com/in/tim-reinhardt-55716b146")
-        img(src="../images/LinkedIn.svg").linked-in-image
-      br
-      a.github(href="https://github.com/tjreinhardt")
-        img(src="../images/github.svg").github-image
-    section.group
-      p Allan Yang -
-      //- a.linked-in(href="https://www.linkedin.com/")
-      //-   img(src="../images/LinkedIn.svg").linked-in-image
-      br
-      a.github(href="https://github.com/ayang740")
-        img(src="../images/github.svg").github-image
-    section.group
-      p Justin Stockton -
-      //- a.linked-in(href="https://www.linkedin.com/") LinkedIn
-      br
-      a.github(href="https://github.com/Justin-Stockton")
-        img(src="../images/github.svg").github-image
-    section.group
-      p John Voskuyl -
-      a.linked-in(href="https://www.linkedin.com/in/john-voskuyl-a2214083/")
-        img(src="../images/LinkedIn.svg").linked-in-image
-      br
-      a.github(href="https://github.com/jvos415")
-        img(src="../images/github.svg").github-image
+  div.about-content-wrapper
+    div.one
+      section.group
+        p Tim Reinhardt -
+        a.github(href="https://github.com/tjreinhardt")
+          img(src="../images/github.svg").github-image
+        br
+        a.linked-in(href="https://www.linkedin.com/in/tim-reinhardt-55716b146")
+          img(src="../images/LinkedIn.svg").linked-in-image
+      section.group
+        p John Voskuyl -
+        a.github(href="https://github.com/jvos415")
+          img(src="../images/github.svg").github-image
+        br
+        a.linked-in(href="https://www.linkedin.com/in/john-voskuyl-a2214083/")
+          img(src="../images/LinkedIn.svg").linked-in-image
+    div
+      section.group
+        p Allan Yang -
+        a.github(href="https://github.com/ayang740")
+          img(src="../images/github.svg").github-image
+        br
+        a.linked-in(href="https://www.linkedin.com/")
+          img(src="../images/LinkedIn.svg").linked-in-image
+      section.group
+        p Justin Stockton -
+        a.github(href="https://github.com/Justin-Stockton")
+          img(src="../images/github.svg").github-image
+        br
+        a.linked-in(href="https://www.linkedin.com/")
+          img(src="../images/LinkedIn.svg").linked-in-image
 block append footer
