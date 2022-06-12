@@ -1,10 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const { csrfProtection, asyncHandler } = require("./utils");
+const { check, validationResult } = require("express-validator");
 const { requireAuth, restoreUser } = require("../auth");
 const db = require("../db/models");
 const { User, Rack, Game, RacksToGame } = db;
 
+const rackValidation = [
+  check("rackName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value Rack Name")
+    .isLength({ max: 100 })
+    .withMessage("First Name must not be more than 100 characters long"),
+];
 // THIS IS THE USER HOME PAGE - USER PROFILE PAGE
 
 router.get(
@@ -12,6 +20,7 @@ router.get(
   requireAuth,
   restoreUser,
   csrfProtection,
+
   asyncHandler(async (req, res) => {
     const racks = await Rack.findAll({
       where: { userId: req.session.auth.userId },
@@ -35,25 +44,32 @@ router.post(
   csrfProtection,
   restoreUser,
   requireAuth,
+  rackValidation,
   asyncHandler(async (req, res, next) => {
     const { rackName } = req.body;
     // console.log(rackName.length);
-    const userRacks = await Rack.findAll({
-      where: { name: rackName },
+    const user = await User.findAll();
+    const validatorErrors = validationResult(req);
+
+    const racks = await Rack.findAll({
+      where: { userId: req.session.auth.userId },
     });
-    if (!userRacks[0] && rackName.length > 0) {
+
+    if (validatorErrors.isEmpty()) {
       const newRack = await Rack.create({
         name: rackName,
         userId: req.session.auth.userId,
       });
     } else {
-      res.redirect("/home");
+      const errors = validatorErrors.array().map((error) => error.msg);
+      res.render("home", {
+        title: "Home",
+        user,
+        racks,
+        errors,
+        csrfToken: req.csrfToken(),
+      });
     }
-
-    const racks = await Rack.findAll({
-      where: { userId: req.session.auth.userId },
-    });
-    console.log(racks.name);
 
     res.redirect("/home");
   })
