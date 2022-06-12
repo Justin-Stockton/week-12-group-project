@@ -74,3 +74,15 @@ span {
   border: none;
   background: none;
 }
+
+button {
+  color: white;
+  background-color: #5536ae;
+  border-radius: 10px;
+}
+
+input[type="submit"] {
+  color: white;
+  background-color: #5536ae;
+  border-radius: 10px;
+}
