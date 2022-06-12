@@ -44,7 +44,10 @@ block append body
           div(class='posted-review')
             div.review-user #{review.User.username}
             div.review-text #{review.review}
-            div.review-timestamp #{review.updatedAt}
+            div.review-timestamp
+              - const date = `${review.updatedAt}`
+              - const realDate = date.toString().split(/\d+:/)[0]
+                p #{realDate}
             - if(review.User.username == user.username)
                 form.edit-review-form(action=`/games/${game.id}/review/${review.id}/update`, method="post")
                   input(type='hidden' name='_csrf' value=csrfToken)
