@@ -39,21 +39,21 @@ block append body
             form(action=`/games/${game.id}/review/add`, method="post") Write a Review!
               input(type='hidden' name='_csrf' value=csrfToken)
               textarea(name="review" id="review")
-              button.add-button-style Submit
+              button.add-button-style-review Submit
         each review in reviews
           div(class='posted-review')
-            p #{review.User.username}
-            p #{review.review}
-            p #{review.updatedAt}
+            div.review-user #{review.User.username}
+            div.review-text #{review.review}
+            div.review-timestamp #{review.updatedAt}
             - if(review.User.username == user.username)
-                form(action=`/games/${game.id}/review/${review.id}/delete`, method="post")
+                form.delete-review-form(action=`/games/${game.id}/review/${review.id}/delete`, method="post")
                   input(type='hidden' name='_csrf' value=csrfToken)
-                  button.add-button-style Delete
+                  button.add-button-style-review Delete
             - if(review.User.username == user.username)
-                form(action=`/games/${game.id}/review/${review.id}/update`, method="post")
+                form.edit-review-form(action=`/games/${game.id}/review/${review.id}/update`, method="post")
                   input(type='hidden' name='_csrf' value=csrfToken)
-                  textarea(name="updatedReview" id="updatedReview") #{review.review}
-                  button.add-button-style Edit
+                  textarea.review-text-box(name="updatedReview" id="updatedReview") #{review.review}
+                  button.add-button-style-review Edit
 
 
 
