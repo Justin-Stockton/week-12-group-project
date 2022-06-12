@@ -8,6 +8,13 @@
   border-radius: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
+
+}
+.game-imgs {
+  transition: transform .2s;
+}
+.game-imgs:hover {
+  transform: scale(1.1);
 }
 
 .game-stuff {
@@ -32,9 +39,26 @@
   display: flex;
   flex-direction: column;
 }
-.reviews {
+.game-review {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #5536ae;
+  border-radius: 10px;
+  padding: 5px;
+}
+.posted-review {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #5536ae;
+  border-radius: 10px;
+  padding: 5px;
 }
