@@ -153,6 +153,7 @@
 .all-review-stuff {
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin: 5px;
 }
 .game-review {
