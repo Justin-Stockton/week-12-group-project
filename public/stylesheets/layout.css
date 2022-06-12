@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  padding: 0;
 }
 
 html {
@@ -12,7 +13,7 @@ nav {
   background-color: #5536ae;
   height: 70px;
   align-items: center;
-  border: black solid 2px;
+  /* border: black solid 2px; */
 }
 
 .logo {
@@ -59,7 +60,7 @@ span {
   background-color: #d9d9d9;
   height: 70px;
   align-items: center;
-  border: black solid 2px;
+  /* border: black solid 2px; */
   padding: 0 5px 0 15px;
 }
 
@@ -75,6 +76,7 @@ span {
   background: none;
 }
 
+
 button {
   color: white;
   background-color: #5536ae;
@@ -85,4 +87,41 @@ input[type="submit"] {
   color: white;
   background-color: #5536ae;
   border-radius: 10px;
+
+.game-content-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.game-content-wrapper > * {
+  margin-bottom: 1%;
+}
+.games {
+  display: flex;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 5rem;
+  justify-content: center;
+  color: #1d1c1c;
+  flex-wrap: wrap;
+}
+
+.owned-games-content-wrapper {
+  display: flex;
+  margin: 0 33% 0 33%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.game-rack {
+  display: flex;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 4rem;
+  justify-content: center;
+  color: #1d1c1c;
+  flex-wrap: wrap;
+}
+
+.game-div {
+  margin-bottom: 1rem;
 }
