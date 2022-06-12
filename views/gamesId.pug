@@ -6,6 +6,10 @@ block append head
 
 block append body
   body
+    div(class='game-stuff')
+      h2.game-title #{game.name}
+      img.game-img(src=game.gameImage)
+      p.description #{game.description}
     div(class="buttons-to-add")
       form(action=`/games/${game.id}/add`, method="post")
         input(type='hidden' name='_csrf' value=csrfToken)
@@ -15,10 +19,6 @@ block append body
         input(type='hidden' name='_csrf' value=csrfToken)
         div.delete-from-owned-games
         input.add-button-style(type='submit' value='Remove from Owned Games')
-    div(class='game-stuff')
-      h2.game-title #{game.name}
-      img.game-img(src=game.gameImage)
-      p.description #{game.description}
 
     div(class='rack-stuff')
       each rack in myRacks
