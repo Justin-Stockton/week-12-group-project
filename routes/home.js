@@ -47,10 +47,7 @@ router.post(
         userId: req.session.auth.userId,
       });
     } else {
-      res.render("home", {
-        title: "Home",
-        csrfToken: req.csrfToken(),
-      });
+      res.redirect("/home");
     }
 
     const racks = await Rack.findAll({
