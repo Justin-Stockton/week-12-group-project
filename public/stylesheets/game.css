@@ -3,6 +3,8 @@
 .game-title {
   display: flex;
   justify-content: center;
+  font-size: 40px;
+  margin: 0px 0 5px 0;
 }
 .game-img {
   border-radius: 10px;
@@ -20,12 +22,18 @@
   display: flex;
   flex-direction: column;
   align-content: center;
-  margin: 4rem 10% 7rem 10%;
+  margin: 4rem 10% 4rem 10%;
 }
 
 .buttons-to-add {
   display: flex;
   justify-content: space-between;
+  margin: 0 11% 0 11%;
+}
+
+.description {
+  font-size: large;
+  font-weight: bold;
 }
 
 .add-button-style {
@@ -88,7 +96,8 @@
 
 .game-rack-link {
   display: flex;
-  align-self: flex-end;
+  align-self: center;
+  justify-content: center;
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: 400;
