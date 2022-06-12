@@ -3,10 +3,16 @@ block append head
   link(rel='stylesheet' href='/stylesheets/home.css')
 block append header
   body
+      if errors
+        div.error-list
+            ul
+            p The following errors were found:
+                each error in errors
+                    li #{error}
   div.content-home
       h1.username Welcome to #[span Good]Games #{user.username}!
-      - if (racks.length === 0)
-        h3.home-rack-create Create your personal game racks below
+           //- - if (racks.length === 0)
+      h3.home-rack-create Create your personal game racks below
       form.home-rack-create(action=`/home`, method="post")
         input(type='hidden' name='_csrf' value=csrfToken)
         div.create-gamerack
