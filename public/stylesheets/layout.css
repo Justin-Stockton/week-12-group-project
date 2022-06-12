@@ -86,11 +86,29 @@ span {
 }
 
 #logout-button {
+  display: flex;
+  text-decoration: none;
+  align-self: center;
+  justify-content: center;
   color: white;
-  font-size: 16px;
-  padding: 0 15px 0 2px;
+  font-size: 17px;
+  line-height: 1;
+  padding: 0 15px 1.5px 2px;
   border: none;
   background: none;
+  transition: 150ms ease-in-out;
+  opacity: 0.95;
+}
+
+#logout-button:hover {
+  text-decoration: none;
+  /* box-sizing: border-box; */
+  display: flex;
+  font-size: 18px;
+  font-weight: 850;
+  transition-duration: 150ms;
+  padding: 0 15px 2px 2px;
+  position: relative;
 }
 
 button {
@@ -154,4 +172,119 @@ input[type="submit"] {
 
 .content {
   margin-top: 15%;
+}
+
+.home {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  line-height: 1;
+  transition: 150ms ease-in-out;
+  opacity: 0.95;
+}
+
+.home:hover {
+  text-decoration: none;
+  /* box-sizing: border-box; */
+  display: flex;
+  font-size: 18px;
+  font-weight: 850;
+  transition-duration: 150ms;
+  padding: 0 15px 0 0;
+  position: relative;
+}
+
+.browsegames {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  line-height: 1;
+  transition: 150ms ease-in-out;
+  opacity: 0.95;
+}
+
+.browsegames:hover {
+  text-decoration: none;
+  /* box-sizing: border-box; */
+  display: flex;
+  font-size: 18px;
+  font-weight: 850;
+  transition-duration: 150ms;
+  padding: 0 15px 0 0;
+  position: relative;
+}
+
+.mygames {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  line-height: 1;
+  transition: 150ms ease-in-out;
+  opacity: 0.95;
+}
+
+.mygames:hover {
+  text-decoration: none;
+  /* box-sizing: border-box; */
+  display: flex;
+  font-size: 18px;
+  font-weight: 850;
+  transition-duration: 150ms;
+  padding: 0 15px 0 0;
+  position: relative;
+}
+
+.login {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  line-height: 1;
+  transition: 150ms ease-in-out;
+  opacity: 0.95;
+}
+
+.login:hover {
+  text-decoration: none;
+  /* box-sizing: border-box; */
+  display: flex;
+  font-size: 18px;
+  font-weight: 850;
+  transition-duration: 150ms;
+  padding: 0 15px 0 0;
+  position: relative;
+}
+
+.signup {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  line-height: 1;
+  transition: 150ms ease-in-out;
+  opacity: 0.95;
+}
+
+.signup:hover {
+  text-decoration: none;
+  /* box-sizing: border-box; */
+  display: flex;
+  font-size: 18px;
+  font-weight: 850;
+  transition-duration: 150ms;
+  padding: 0 15px 0 0;
+  position: relative;
 }
