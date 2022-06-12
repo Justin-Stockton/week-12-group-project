@@ -12,7 +12,7 @@ html
   header
     block header
       nav
-        p.logo #[span G]Gs - #[span Good]Games
+        a.logo(href="/" style="text-decoration:none;") #[span G]Gs - #[span Good]Games
         div(class="nav-bar-buttons")
           if locals.authenticated
             a.home(href="/home") Home
