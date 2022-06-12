@@ -1,5 +1,6 @@
 extends layout.pug
 block append head
+    script(src="/javascripts/index.js" type="module")
     link(rel='stylesheet' href='/stylesheets/game.css')
     link(src="index.js" type="module")
 
@@ -56,6 +57,7 @@ block append body
                   input(type='hidden' name='_csrf' value=csrfToken)
                   textarea.review-text-box(name="updatedReview" id="updatedReview") #{review.review}
                   button.add-button-style-review Submit
+                    button.add-button-style-review#cancel Cancel
             - if(review.User.username == user.username)
                 form.delete-review-form(action=`/games/${game.id}/review/${review.id}/delete`, method="post")
                   input(type='hidden' name='_csrf' value=csrfToken)
