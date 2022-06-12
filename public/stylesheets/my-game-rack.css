@@ -1,36 +1,37 @@
 @import "layout.css";
 
 .add-button-style {
-    box-sizing: border-box;
-    appearance: none;
-    background-color: transparent;
-    border: 2px solid #5536ae;
-    border-radius: 0.6em;
-    transition: all 150ms ease-in-out;
-    color: #fcfcfc;
-    background-color: #5536ae;
-    cursor: pointer;
-    display: flex;
-    align-self: center;
-    font-size: 0.8rem;
-    font-weight: 400;
-    line-height: 1;
-    margin: 20px;
-    padding: 1.2em 2.8em;
-    text-decoration: none;
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: 700;
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #5536ae;
+  border-radius: 0.6em;
+  transition: all 150ms ease-in-out;
+  color: #fcfcfc;
+  background-color: #5536ae;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .add-button-style:hover {
-    box-shadow: 0 0 5px 5px #5536ae, 0 0 0 0 #c3b7e7;
-    color: #5536ae;
-    background-color: white;
+  box-shadow: 0 0 5px 5px #5536ae, 0 0 0 0 #c3b7e7;
+  color: #5536ae;
+  background-color: white;
 }
 
 .main-content {
-    margin: 0px 25px 0px 25px;
+  margin: 0px 25px 0px 25px;
+  height: 100vh;
 }
 
 /* .filler {
