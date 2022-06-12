@@ -1,7 +1,28 @@
-extends layout.pug
-block append head
-    link(rel='stylesheet' href='/stylesheets/splash.css')
-block append header
+doctype html
+html
+  head
+      link(rel="preconnect" href="https://fonts.googleapis.com")
+      link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+      link(href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800;900&display=swap" rel="stylesheet")
+      link(rel="icon" type="image/x-icon" href="/stylesheets/favicon.ico")
+      link(rel='stylesheet' href='/stylesheets/splash.css')
+      title GGs - #{title}
+  header
+      nav
+        a.logo(href="/" style="text-decoration:none;") #[span G]Gs - #[span Good]Games
+        div(class="nav-bar-buttons")
+          if locals.authenticated
+            a.home(href="/home") Home
+          a.browsegames(href="/games") Browse Games
+          if locals.authenticated
+            a.mygames(href="/MyGames") My Games
+          if !locals.authenticated
+            a.login(href="/users/login") Log In
+          form(action="/users/logout" method="post")
+              input(type='hidden' name='_csrf' value=csrfToken)
+              div
+                input(type='submit' value='Log Out')#logout-button
+
   body
     div.content
         h2 Discover and Play More
@@ -9,7 +30,7 @@ block append header
         //- button.sign-up-button
         //-     a.sign-up-button-a(href="/users/signup" role="button" style="text-decoration:none;") Sign-Up With Email
 
-        a.sign-up-a(name="sign-up-button" href=`/users/signup` style="color:black") 
+        a.sign-up-a(name="sign-up-button" href=`/users/signup` style="color:black")
             div
             button.sign-up-button(id="signup-button") Sign Up
         div.top-words
@@ -41,5 +62,7 @@ block append header
                 img(src="https://cdn.cloudflare.steamstatic.com/steam/apps/976730/header.jpg?t=1649955774", alt="haloQuote", style="height:20px;width:20px")
                 p "I thought I'd try shooting my way out-- Mix things up a little" - Master Chief
 
-    block content
-block append footer
+  footer
+      div.footer
+          a.about-us(href="/about-us") #[span ABOUT] US
+          p.goodgames-inc #[span © 2022 G]Gs - #[span Good]Games, Inc.
