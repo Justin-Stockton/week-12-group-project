@@ -145,7 +145,7 @@ h2 {
   flex-direction: column;
   /* margin-top: 20% 0 20% 0; */
   margin: 20px 0px 20px 0px;
-  overflow-y: ;
+  overflow-y: scoll;
 }
 
 .middle {
@@ -159,8 +159,10 @@ h2 {
   display: flex;
   width: 25%;
   flex-direction: column;
-  margin-left: 10%;
-
+  margin-left: 7%;
+  position: relative;
+  left: 30%;
+  text-align: center
 }
 
 .top-words > p {
@@ -176,6 +178,6 @@ h2 {
   position: relative;
   left: 30%;
   flex-direction: row;
-  margin-top: 10%;
+  margin-top: 10px;
   margin-right: 60%;
 }
