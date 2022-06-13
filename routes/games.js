@@ -51,7 +51,12 @@ router.get(
     });
 
     let hasReviewed = true;
-
+    let hasRacks = true;
+    const userRacks = await Rack.findAll({
+      where: {
+        userId,
+      },
+    });
     const reviews = await Review.findAll({
       where: {
         gameId,
@@ -64,6 +69,9 @@ router.get(
         userId,
       },
     });
+    if (!userRacks.length) {
+      hasRacks = false;
+    }
     if (!userReview.length) {
       hasReviewed = false;
     }
@@ -81,6 +89,7 @@ router.get(
       reviews,
       auth,
       myRacks,
+      hasRacks,
       hasReviewed,
     });
   })

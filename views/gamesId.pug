@@ -25,20 +25,20 @@ block append body
           input(type='hidden' name='_csrf' value=csrfToken)
           div.delete-from-owned-games
           input.add-button-style(type='submit' value='Remove from Owned Games')
-          br
-          br
-      h3.my-racks Add to your rack!
-      div(class='rack-stuff')
-        each rack in myRacks
-          form(action=`/games/${game.id}/${rack.id}/add`, method="post")
-            input(type='hidden' name='_csrf' value=csrfToken)
-            input(type="hidden" name="rackId" value=rack.id)
-            //- input(type="hidden" name="gameId" value=game.id)
-            //- p(name="myRacks" required)
-            //-     p #{rack.name}
-            a.game-rack-link(name="rackId" href=`/my-game-racks/${rack.id}` style="color:black") #{rack.name}
-              div
-              button.add-button-style(id="this-button") Add to this Rack
+
+      - if(hasRacks == true)
+        h3.my-racks Add to your rack!
+        div(class='rack-stuff')
+          each rack in myRacks
+            form(action=`/games/${game.id}/${rack.id}/add`, method="post")
+              input(type='hidden' name='_csrf' value=csrfToken)
+              input(type="hidden" name="rackId" value=rack.id)
+              //- input(type="hidden" name="gameId" value=game.id)
+              //- p(name="myRacks" required)
+              //-     p #{rack.name}
+              a.game-rack-link(name="rackId" href=`/my-game-racks/${rack.id}` style="color:black") #{rack.name}
+                div
+                button.add-button-style(id="this-button") Add to this Rack
 
 
 
