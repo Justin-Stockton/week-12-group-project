@@ -67,4 +67,12 @@ const userValidators = [
     ),
 ];
 
-module.exports = { userValidators, loginValidators };
+const rackValidation = [
+  check("rackName")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value Rack Name")
+    .isLength({ max: 100 })
+    .withMessage("First Name must not be more than 100 characters long"),
+];
+
+module.exports = { userValidators, loginValidators, rackValidation };
