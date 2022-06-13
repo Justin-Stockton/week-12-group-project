@@ -32,6 +32,7 @@
 .main-content {
   margin: 0px 25px 0px 25px;
   height: 100vh;
+  overflow-y: scroll;
 }
 
 /* .filler {
