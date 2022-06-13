@@ -141,7 +141,7 @@ h2 {
   display: flex;
   flex-direction: column;
   /* margin-top: 20% 0 20% 0; */
-  height: 100vh;
+  height: 85vh;
   margin: 0 20% 0 20%;
   overflow-y: scoll;
 }
