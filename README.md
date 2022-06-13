@@ -6,13 +6,13 @@ Come one, come all and browse video/computer games to your heart's content.
 
 - Create a User account
 - Add games to your owned games page
-- Create custom name game racks to fill with games that fit the bill (wanted games, favorite games, etc)
+- Create custom game racks to fill with games that fit the bill (wanted games, favorite games, etc)
 - Write, edit and delete a review for games as a logged in User
 - Ability to view reviews written by other Users
 
-## Please create a user and explore the funcionality of our site!
+## Please create a user and explore the functionality of our site!
 
-Happing game hunting!
+Happy game hunting!
 
 - Link to our live site
 - http://good-games-ggs.herokuapp.com/
