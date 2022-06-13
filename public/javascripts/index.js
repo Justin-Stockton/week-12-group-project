@@ -1,5 +1,3 @@
-// console.log("hi");
-
 const shown = document.getElementById("shown");
 const hidden = document.getElementById("hidden");
 const cancel = document.getElementById("cancel");

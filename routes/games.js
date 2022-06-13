@@ -50,12 +50,25 @@ router.get(
       },
     });
 
+    let hasReviewed = true;
+
     const reviews = await Review.findAll({
       where: {
         gameId,
       },
       include: User,
     });
+    const userReview = await Review.findAll({
+      where: {
+        gameId,
+        userId,
+      },
+    });
+    if (!userReview.length) {
+      hasReviewed = false;
+    }
+    // console.log(hasReviewed);
+
     if (!game) {
       res.redirect("/404");
     }
@@ -68,6 +81,7 @@ router.get(
       reviews,
       auth,
       myRacks,
+      hasReviewed,
     });
   })
 );

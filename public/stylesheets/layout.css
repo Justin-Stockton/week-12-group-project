@@ -144,8 +144,8 @@ input[type="submit"] {
 
 .owned-games-content-wrapper {
   display: flex;
-  margin: 0 33% 0 33%;
-  justify-content: center;
+  margin: 3% 20% 5%;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 .game-rack {
@@ -159,7 +159,7 @@ input[type="submit"] {
 }
 
 .game-div {
-  margin-bottom: 1rem;
+  margin: 2%;
 }
 
 .deciding-container {

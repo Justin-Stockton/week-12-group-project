@@ -6,62 +6,78 @@ block append head
 
 block append body
   body
-    div(class='game-stuff')
-      h2.game-title #{game.name}
-      img.game-img(src=game.gameImage)
-      p.description #{game.description}
-    div(class="buttons-to-add")
-      form(action=`/games/${game.id}/add`, method="post")
-        input(type='hidden' name='_csrf' value=csrfToken)
-        div.add-to-owned-games
-        input.add-button-style(type='submit' value='Add to Owned Games')
-      form(action=`/games/${game.id}/delete`, method="post")
-        input(type='hidden' name='_csrf' value=csrfToken)
-        div.delete-from-owned-games
-        input.add-button-style(type='submit' value='Remove from Owned Games')
-
-    div(class='rack-stuff')
-      each rack in myRacks
-        form(action=`/games/${game.id}/${rack.id}/add`, method="post")
+    div.content-wrapper
+      div(class='game-stuff')
+        h2.game-title #{game.name}
+        img.game-img(src=game.gameImage)
+        br
+        h3.game-description-header Game Description:
+        br
+        p.description #{game.description}
+      div(class="buttons-to-add")
+        form(action=`/games/${game.id}/add`, method="post")
           input(type='hidden' name='_csrf' value=csrfToken)
-          input(type="hidden" name="rackId" value=rack.id)
-          //- input(type="hidden" name="gameId" value=game.id)
-          //- p(name="myRacks" required)
-          //-     p #{rack.name}
-          a.game-rack-link(name="rackId" href=`/my-game-racks/${rack.id}` style="color:black") #{rack.name}
-            div
-            button.add-button-style(id="this-button") Add to this Rack
+          div.add-to-owned-games
+          input.add-button-style(type='submit' value='Add to Owned Games')
+          br
+          br
+        form(action=`/games/${game.id}/delete`, method="post")
+          input(type='hidden' name='_csrf' value=csrfToken)
+          div.delete-from-owned-games
+          input.add-button-style(type='submit' value='Remove from Owned Games')
+          br
+          br
+      h3.my-racks Add to your rack!
+      div(class='rack-stuff')
+        each rack in myRacks
+          form(action=`/games/${game.id}/${rack.id}/add`, method="post")
+            input(type='hidden' name='_csrf' value=csrfToken)
+            input(type="hidden" name="rackId" value=rack.id)
+            //- input(type="hidden" name="gameId" value=game.id)
+            //- p(name="myRacks" required)
+            //-     p #{rack.name}
+            a.game-rack-link(name="rackId" href=`/my-game-racks/${rack.id}` style="color:black") #{rack.name}
+              div
+              button.add-button-style(id="this-button") Add to this Rack
 
 
 
 
-    div(class='all-review-stuff')
-      div(class='write-a-review')
-        h2.game-reviews #{game.name} Reviews
-          div(class='game-review')
-            form(action=`/games/${game.id}/review/add`, method="post") Write a Review!
-              input(type='hidden' name='_csrf' value=csrfToken)
-              textarea(name="review" id="review")
-              button.add-button-style-review Submit
-        each review in reviews
-          div(class='posted-review')
-            div.review-user #{review.User.username}
-            div.review-text #{review.review}
-            div.review-timestamp
-              - const date = `${review.updatedAt}`
-              - const realDate = date.toString().split(/\d+:/)[0]
-                p #{realDate}
-            - if(review.User.username == user.username)
-                button.add-button-style-review(id="shown") Edit
-                form.edit-review-form(id = "hidden" action=`/games/${game.id}/review/${review.id}/update`, method="post")
-                  input(type='hidden' name='_csrf' value=csrfToken)
-                  textarea.review-text-box(name="updatedReview" id="updatedReview") #{review.review}
-                  button.add-button-style-review Submit
-                    button.add-button-style-review#cancel Cancel
-            - if(review.User.username == user.username)
-                form.delete-review-form(action=`/games/${game.id}/review/${review.id}/delete`, method="post")
-                  input(type='hidden' name='_csrf' value=csrfToken)
-                  button.add-button-style-review Delete
+      div(class='all-review-stuff')
+        div(class='write-a-review')
+          br
+          br
+          h2.game-reviews #{game.name} Reviews
+          br
+          br
+          - if(hasReviewed == false)
+            div(class='game-review')
+              div
+              form#review-form(action=`/games/${game.id}/review/add`, method="post") Write a Review!
+                input(type='hidden' name='_csrf' value=csrfToken)
+                div
+                textarea(name="review" id="review")
+                div
+                button.add-button-style-review(type="submit") Submit
+          each review in reviews
+            div(class='posted-review')
+              div.review-user #{review.User.username}
+              div.review-text #{review.review}
+              div.review-timestamp
+                - const date = `${review.updatedAt}`
+                - const realDate = date.toString().split(/\d+:/)[0]
+                  p #{realDate}
+              - if(review.User.username == user.username)
+                  button.add-button-style-review(id="shown") Edit
+                  form.edit-review-form(id = "hidden" action=`/games/${game.id}/review/${review.id}/update`, method="post")
+                    input(type='hidden' name='_csrf' value=csrfToken)
+                    textarea.review-text-box(name="updatedReview" id="updatedReview") #{review.review}
+                    button.add-button-style-review Submit
+                      button.add-button-style-review#cancel Cancel
+              - if(review.User.username == user.username)
+                  form.delete-review-form(action=`/games/${game.id}/review/${review.id}/delete`, method="post")
+                    input(type='hidden' name='_csrf' value=csrfToken)
+                    button.add-button-style-review Delete
 
 
 
