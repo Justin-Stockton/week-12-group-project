@@ -62,7 +62,7 @@ router.post(
       });
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
-      res.render("home", {
+      return res.render("home", {
         title: "Home",
         user,
         racks,
