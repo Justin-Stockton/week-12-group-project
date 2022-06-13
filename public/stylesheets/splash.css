@@ -10,7 +10,6 @@
   display: none;
 }
 
-
 /* body {
   background-color: #424242;
 } */
@@ -21,7 +20,7 @@
   flex-direction: column;
   margin: 0px 10% 0 10%;
   /* border: 1px solid black; */
-  /* background-color: white; */
+/* background-color: white; */
 /* } */
 
 /* .sign-up-button {
@@ -112,7 +111,6 @@ h2 {
   box-shadow: 0 0 5px 5px #5536ae, 0 0 0 0 #c3b7e7;
   color: #5536ae;
   background-color: white;
-
 }
 
 .sign-up-a {
@@ -123,7 +121,6 @@ h2 {
 .quote-with-img {
   display: flex;
   flex-shrink: inherit;
-
 }
 
 .quote-with-img > * {
@@ -144,7 +141,8 @@ h2 {
   display: flex;
   flex-direction: column;
   /* margin-top: 20% 0 20% 0; */
-  margin: 20px 0px 20px 0px;
+  height: 100vh;
+  margin: 0 20% 0 20%;
   overflow-y: scoll;
 }
 
@@ -162,7 +160,7 @@ h2 {
   margin-left: 7%;
   position: relative;
   left: 30%;
-  text-align: center
+  text-align: center;
 }
 
 .top-words > p {
@@ -181,5 +179,3 @@ h2 {
   margin-top: 10px;
   margin-right: 60%;
 }
-
-
