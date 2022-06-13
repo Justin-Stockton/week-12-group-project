@@ -38,6 +38,7 @@ block append body
     div(class='all-review-stuff')
       div(class='write-a-review')
         h2.game-reviews #{game.name} Reviews
+        - if(hasReviewed == false)
           div(class='game-review')
             form(action=`/games/${game.id}/review/add`, method="post") Write a Review!
               input(type='hidden' name='_csrf' value=csrfToken)

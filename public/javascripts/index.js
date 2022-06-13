@@ -1,4 +1,4 @@
-// console.log("hi");
+const isUser = require("../../routes/games");
 
 const shown = document.getElementById("shown");
 const hidden = document.getElementById("hidden");
